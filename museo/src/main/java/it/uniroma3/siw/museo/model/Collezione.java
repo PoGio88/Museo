@@ -19,8 +19,10 @@ public class Collezione {
 
     private String descrizione;
 
-    @OneToMany
+    @OneToMany(mappedBy = "collezione")
     private List<Opera> opere;
+    
+    
 
 
 }
