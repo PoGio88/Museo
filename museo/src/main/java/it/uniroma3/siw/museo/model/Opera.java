@@ -14,6 +14,7 @@ public class Opera {
     @GeneratedValue( strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(nullable = false)
     private String titolo;
 
     private int anno;  //dobbiamo capire che tipo mettere
@@ -22,4 +23,8 @@ public class Opera {
 
     @ManyToOne
     private Artista artista;
+    
+    @ManyToOne
+    @Column(nullable = false)
+    private Collezione collezione;
 }
