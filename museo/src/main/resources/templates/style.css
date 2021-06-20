@@ -1,0 +1,46 @@
+body {
+    height: 1000px;
+}
+
+header {
+    height: 20%;
+    background-color: brown;
+}
+
+header > h1 {
+    text-align: center;
+    font-family: "Berlin Sans FB";
+    color: white;
+}
+
+#bloccocentrale {
+    height: 30%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#contenutoprincipale {
+    display: inline-flex;
+    background-color: aquamarine;
+    width: 70%;
+}
+
+#menulaterale {
+    display: inline-flex;
+    color: chocolate;
+    width: 30%;
+}
+
+#bloccoinformazioni {
+    background-color: green;
+    height: 40%;
+}
+
+footer {
+    background-color: darkviolet;
+    height: 10%;
+    color: white;
+}
+
+
+

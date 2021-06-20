@@ -22,7 +22,9 @@ public class Collezione {
     @OneToMany(mappedBy = "collezione")
     private List<Opera> opere;
     
-    
+    public Collezione(String nome) {
+        this.nome=nome;
+    }
 
 
 }

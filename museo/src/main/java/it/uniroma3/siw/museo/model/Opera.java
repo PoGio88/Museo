@@ -21,10 +21,9 @@ public class Opera {
 
     private String descrizione;
 
-    @ManyToOne
-    private Artista artista;
+    /*@ManyToOne
+    private Artista artista;*/
     
     @ManyToOne
-    @Column(nullable = false)
     private Collezione collezione;
 }

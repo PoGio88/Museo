@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -19,6 +19,12 @@
                   <span>Descrizione:</span>
                   <span><input type="text" th:field="*{descrizione}" /></span>
               </div>
+              <div>
+                  <select name="Collezione">
+                        <option th:each="collezione : ${collezioni}" th:text="${collezione.nome}"></option>
+                  </select>
+              </div>
+
               <div>
                   <span><button type="submit">Invio</button></span>
               </div>
