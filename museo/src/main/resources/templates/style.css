@@ -1,33 +1,59 @@
-body {
-    height: 1920px;
-    widht: 960px;
-    text-align: center;
-}
-
-header {
-    height: 20%;
-    background-color: brown;
-    border-radius: 5%;
-    margin: 1%;
-}
-
-header > h1 {
-    text-align: center;
-    font-family: "Berlin Sans FB";
+nav {
+    height: 40px;
+    background-color: #B8860B;
     color: white;
+
+}
+#menu {
+    display: flex;
+    justify-content:flex-end;
+    margin-right: 200px;
+}
+#menu > button {
+    font-size: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 8px;
+    background-color: transparent;
+    border: none;
+    transition: all .6s;
+    
+}
+
+button:hover{
+background-color: black;
+color: white;
+}
+
+
+#Sfondo {
+    height: 500px;
+    background-image: url(louvre.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 100px;
+
+}
+body {
+    margin: 0px;
+}
+h1 {
+    text-align: center;
+    line-height: 500px;
+    color: white;
+    font-size: 100px;
+
 }
 
 #bloccocentrale {
-    height: 30%;
+    height: 500px;
     display: flex;
     justify-content: flex-start;
     border-radius: 5%;
 }
 
 #contenutoprincipale {
-    display: inline-flex;
-    background-color: aquamarine;
-    width: 70%;
+    background-color: white;
     margin-right: 1%;
     margin-top: 1%;
     margin-left: 1%;
@@ -35,18 +61,10 @@ header > h1 {
     -moz-border-radius-topright: 5%;
 }
 
-#menulaterale {
-    display: inline-flex;
-    background-color: black;
-    color: chocolate;
-    width: 30%;
-    margin: 1%;
-    border-radius: 5%;
-}
 
 #bloccoinformazioni {
     background-color: green;
-    height: 40%;
+    height: 300px;
     -moz-border-radius-bottomleft: 5%;
     -moz-border-radius-bottomright: 5%;
     -moz-border-radius-topright: 5%;
@@ -57,7 +75,7 @@ header > h1 {
 
 footer {
     background-color: darkviolet;
-    height: 10%;
+    height: 100px;
     color: white;
     margin: 1%;
     border-radius: 5%;
