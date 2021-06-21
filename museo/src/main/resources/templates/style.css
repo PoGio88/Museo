@@ -1,10 +1,14 @@
 body {
-    height: 1000px;
+    height: 1920px;
+    widht: 960px;
+    text-align: center;
 }
 
 header {
     height: 20%;
     background-color: brown;
+    border-radius: 5%;
+    margin: 1%;
 }
 
 header > h1 {
@@ -17,30 +21,46 @@ header > h1 {
     height: 30%;
     display: flex;
     justify-content: flex-start;
+    border-radius: 5%;
 }
 
 #contenutoprincipale {
     display: inline-flex;
     background-color: aquamarine;
     width: 70%;
+    margin-right: 1%;
+    margin-top: 1%;
+    margin-left: 1%;
+    -moz-border-radius-topleft: 5%;
+    -moz-border-radius-topright: 5%;
 }
 
 #menulaterale {
     display: inline-flex;
+    background-color: black;
     color: chocolate;
     width: 30%;
+    margin: 1%;
+    border-radius: 5%;
 }
 
 #bloccoinformazioni {
     background-color: green;
     height: 40%;
+    -moz-border-radius-bottomleft: 5%;
+    -moz-border-radius-bottomright: 5%;
+    -moz-border-radius-topright: 5%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    margin-left: 1%;
 }
 
 footer {
     background-color: darkviolet;
     height: 10%;
     color: white;
+    margin: 1%;
+    border-radius: 5%;
 }
-
 
 
