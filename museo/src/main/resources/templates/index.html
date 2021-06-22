@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link href="style.css" rel="stylesheet">
+    <link th:href= "@{/css/style.css}"rel="stylesheet">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -28,7 +28,9 @@
 
         <div id="bloccoinformazioni">Prova</div>
         <footer>
-            Sito realizzato da Daniele Pica e Giorgio Poggini
+            <h3>realizzato da Daniele Pica e Giorgio Poggini </h3>
+            <a href="aggiungiOpera"> Inserisci Opera </a>
+            
         </footer>
 </body>
 </html>
