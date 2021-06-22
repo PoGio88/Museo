@@ -1,19 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link th:href= "@{/css/style.css}"rel="stylesheet">
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace = "fragments/base.html :: headerfiles">
 </head>
 <body>
-        <header >
-            <nav> 
-                <div id = "menu">
-                <button>Autori</button>
-                <button>Collezioni</button>
-                <button>Opere</button>
-                </div>
-            </nav>
+        <header th:replace= "fragments/base.html :: menu">
         </header>
 
         <div id="Sfondo">
@@ -22,15 +12,12 @@
 
         <div id="bloccocentrale">
             <div id="contenutoprincipale">
-                    <span>ciao</span>
+                    <a th:href = "@{/menuAmministratore}">Menu amministratore</a>
             </div>
         </div>
 
         <div id="bloccoinformazioni">Prova</div>
-        <footer>
-            <h3>realizzato da Daniele Pica e Giorgio Poggini </h3>
-            <a href="aggiungiOpera"> Inserisci Opera </a>
-            
-        </footer>
+        <footer th:replace ="fragments/base.html :: fondo">
+           </footer>
 </body>
 </html>

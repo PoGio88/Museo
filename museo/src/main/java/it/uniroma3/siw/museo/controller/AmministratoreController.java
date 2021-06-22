@@ -29,4 +29,8 @@ public class AmministratoreController {
         service.inserisciOpera(opera);
         return "index.html";
     }
+    @RequestMapping(value = "/menuAmministratore", method = RequestMethod.GET)
+    public String menuAmministratore() {
+    	return "menuAmministratore.html";
+    	}
 }

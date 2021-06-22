@@ -6,18 +6,21 @@
 	<title th:text="Museo"></title>
 </head>
 <body>
-	<header th:fragment="intestazione">
-		<h1>Siw - Spring Very Simple Demo</h1>
+	<header th:fragment="menu">
+		<nav> 
+                <div id = "menu">
+                <button>Autori</button>
+                <button>Collezioni</button>
+                <button>Opere</button>
+                </div>
+            </nav>
 	</header>
 
-	<p>Go to the next page to see fragments in action</p>
-	<aside>
-		<div>This is a sidebar</div>
-	</aside>
-	<div class="another">This is another sidebar</div>
 	
 	<footer th:fragment="fondo">
 		<a th:href="@{/}">Home</a>
+		<h3>realizzato da Daniele Pica e Giorgio Poggini </h3>
+            
 	</footer>
 </body>
 </html>
