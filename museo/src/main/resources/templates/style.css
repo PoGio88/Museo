@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 nav {
     height: 40px;
     background-color: #B8860B;
@@ -9,6 +13,12 @@ nav {
     justify-content:flex-end;
     margin-right: 200px;
 }
+
+button:hover{
+    background: black;
+    color: white;
+}
+
 #menu > button {
     font-size: 20px;
     padding-left: 50px;
@@ -20,10 +30,7 @@ nav {
     
 }
 
-button:hover{
-background-color: black;
-color: white;
-}
+
 
 
 #Sfondo {
@@ -32,17 +39,17 @@ color: white;
     background-size: cover;
     background-repeat: no-repeat;
     padding: 100px;
-
+    text-align: center;
 }
 body {
     margin: 0px;
 }
-h1 {
-    text-align: center;
+
+#Titolo {
     line-height: 500px;
     color: white;
     font-size: 100px;
-
+    text-decoration: none;
 }
 
 #bloccocentrale {
