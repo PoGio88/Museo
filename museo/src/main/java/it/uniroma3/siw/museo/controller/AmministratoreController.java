@@ -18,9 +18,9 @@ public class AmministratoreController {
 
     @RequestMapping(value = "/aggiungiOpera", method = RequestMethod.GET)
     public String aggiungiOpera(Model model) {
-        this.service.provaInserisciCollezioni();
+        //this.service.provaInserisciCollezioni();
         model.addAttribute("opera", new Opera());
-        model.addAttribute("collezioni",this.service.tutteLeCollezioni());
+        //model.addAttribute("collezioni",this.service.tutteLeCollezioni());
         return "operaForm.html";
     }
 
