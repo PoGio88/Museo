@@ -1,6 +1,7 @@
 package it.uniroma3.siw.museo.model;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -11,15 +12,20 @@ import javax.persistence.*;
 public class Opera {
 
     @Id
-    @GeneratedValue( strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(nullable = false)
+    
     private String titolo;
 
     private int anno;  //dobbiamo capire che tipo mettere
 
     private String descrizione;
 
+    /*@ManyToOne
+    private Artista artista;*/
+    
     @ManyToOne
-    private Artista artista;
+    private Collezione collezione;
 }

@@ -2,6 +2,7 @@ package it.uniroma3.siw.museo.controller;
 
 
 import it.uniroma3.siw.museo.model.Opera;
+import it.uniroma3.siw.museo.service.MuseoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,9 @@ public class AmministratoreController {
 
     @RequestMapping(value = "/aggiungiOpera", method = RequestMethod.GET)
     public String aggiungiOpera(Model model) {
+        this.service.provaInserisciCollezioni();
         model.addAttribute("opera", new Opera());
+        model.addAttribute("collezioni",this.service.tutteLeCollezioni());
         return "operaForm.html";
     }
 
@@ -26,4 +29,8 @@ public class AmministratoreController {
         service.inserisciOpera(opera);
         return "index.html";
     }
+    @RequestMapping(value = "/menuAmministratore", method = RequestMethod.GET)
+    public String menuAmministratore() {
+    	return "menuAmministratore.html";
+    	}
 }

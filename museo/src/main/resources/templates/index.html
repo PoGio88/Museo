@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "fragments/base.html :: headerfiles">
 </head>
 <body>
-        <a href="/aggiungiOpera">Aggiungi opera</a>
+        <header th:replace= "fragments/base.html :: menu">
+        </header>
+
+        <div id="Sfondo">
+                <a id="Titolo" href="#bloccocentrale">Museo</a>
+        </div>
+
+        <div id="bloccocentrale">
+            <div id="contenutoprincipale">
+                    <a th:href = "@{/menuAmministratore}">Menu amministratore</a>
+            </div>
+        </div>
+
+        <div id="bloccoinformazioni">Prova</div>
+        <footer th:replace ="fragments/base.html :: fondo">
+           </footer>
 </body>
 </html>

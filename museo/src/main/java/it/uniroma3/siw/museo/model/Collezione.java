@@ -19,8 +19,12 @@ public class Collezione {
 
     private String descrizione;
 
-    @OneToMany
+    @OneToMany(mappedBy = "collezione")
     private List<Opera> opere;
+    
+    public Collezione(String nome) {
+        this.nome=nome;
+    }
 
 
 }
