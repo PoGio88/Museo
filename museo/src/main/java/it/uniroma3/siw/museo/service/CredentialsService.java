@@ -13,7 +13,7 @@ import it.uniroma3.siw.museo.model.Credentials;
 @Service
 public class CredentialsService {
 	
-    @Autowired
+    @Autowired 
     protected PasswordEncoder passwordEncoder;
 
 	@Autowired
@@ -31,12 +31,11 @@ public class CredentialsService {
 		return result.orElse(null);
 	}
 		
-    /* Per ora non ci serve creare nuovi account 
-     * @Transactional
+    @Transactional
     public Credentials saveCredentials(Credentials credentials) {
-        credentials.setRole(Credentials.DEFAULT_ROLE);
+        credentials.setRole(Credentials.ADMIN_ROLE);
         credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
         return this.credentialsRepository.save(credentials);
-    }*/
+    }
 }
 	

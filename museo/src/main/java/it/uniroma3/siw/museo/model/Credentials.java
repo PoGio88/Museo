@@ -16,7 +16,7 @@ import lombok.Data;
 @Data
 public class Credentials {
 	
-	public static final String DEFAULT_ROLE = "DEFAULT";
+
 	public static final String ADMIN_ROLE = "ADMIN";
 	
 	@Id
@@ -33,7 +33,7 @@ public class Credentials {
 	private String role;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private Utente user;
+	private Utente utente;
 
 	
 
