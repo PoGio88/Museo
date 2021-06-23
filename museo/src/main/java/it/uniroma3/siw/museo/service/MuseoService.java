@@ -52,5 +52,11 @@ public class MuseoService {
 		Optional<Opera> optional = operaRepository.findById(id);
 		return optional.orElse(null);
 	}
-    
+
+	@Transactional
+	public void provaInserisciCollezioni() {
+    	this.collezioneRepository.save(new Collezione("ciao"));
+		this.collezioneRepository.save(new Collezione("blu"));
+		this.collezioneRepository.save(new Collezione("rosso"));
+	}
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles">
+	<meta charset="UTF-8" />
+	<link th:href="@{/css/style.css}" rel="stylesheet">
+	<title th:text="Museo"></title>
+</head>
+<body>
+	<header th:fragment="menu">
+		<nav> 
+                <div id = "menu">
+                <button>Autori</button>
+                <button>Collezioni</button>
+                <button>Opere</button>
+                </div>
+            </nav>
+	</header>
+
+	
+	<footer th:fragment="fondo">
+		<a th:href="@{/}">Home</a>
+		<h3>realizzato da Daniele Pica e Giorgio Poggini </h3>
+            
+	</footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <form th:action = "@{/aggiungiOpera}" method="post" th:object = "${opera}">
+          <div>
+              <div>
+                  <span>Nome:</span>
+                  <span><input type="text" th:field="*{titolo}" /></span>
+              </div>
+              <div>
+                  <span>Anno:</span>
+                  <span><input type="text" th:field="*{anno}" /></span>
+              </div>
+              <div>
+                  <span>Descrizione:</span>
+                  <span><input type="text" th:field="*{descrizione}" /></span>
+              </div>
+              <div>
+                  <select name="Collezione">
+                        <option th:each="collezione : ${collezioni}" th:text="${collezione.nome}"></option>
+                  </select>
+              </div>
+
+              <div>
+                  <span><button type="submit">Invio</button></span>
+              </div>
+          </div>
+      </form>
+
+</body>
+</html>
