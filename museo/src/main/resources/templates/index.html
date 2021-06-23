@@ -12,12 +12,12 @@
 
         <div id="bloccocentrale">
             <div id="contenutoprincipale">
-                    <a th:href = "@{/menuAmministratore}">Menu amministratore</a>
+                    <a th:href = "@{/login}">Effettua login</a>
             </div>
         </div>
 
         <div id="bloccoinformazioni">Prova</div>
-        <footer th:replace ="fragments/base.html :: fondo">
+        <footer th:replace ="fragments/base.html :: fondo(home='/')">
            </footer>
 </body>
 </html>

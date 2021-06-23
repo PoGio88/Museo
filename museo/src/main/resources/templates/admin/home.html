@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "fragments/base.html :: headerfiles">
+</head>
+<body>
+        <nav> Menu amministratore </nav>
+        <a href="aggiungiOpera"> Inserisci Opera </a>
+        <span> Modifica collezioni </span>
+        
+        <div>
+			<a th:href="@{/logout}">Logout</a>
+   		</div>
+   		
+        <footer th:replace ="fragments/base.html :: fondo(home='/default')">
+           </footer>
+</body>
+</html>
