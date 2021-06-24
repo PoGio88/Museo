@@ -26,6 +26,7 @@ public class AmministratoreController {
 
     @RequestMapping(value = "/aggiungiOpera", method = RequestMethod.POST)
     public String aggiungiOpera(@ModelAttribute("opera") Opera opera, Model model){
+        opera.setCollezione(service.collezionePerNome(opera.getNomeCollezione()));
         service.inserisciOpera(opera);
         return "index.html";
     }

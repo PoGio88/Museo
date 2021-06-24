@@ -35,7 +35,6 @@ public class Credentials {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Utente utente;
 
-	
 
 	
 

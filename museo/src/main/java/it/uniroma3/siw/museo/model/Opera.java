@@ -25,7 +25,9 @@ public class Opera {
 
     /*@ManyToOne
     private Artista artista;*/
-    
+
+    private String nomeCollezione;
+
     @ManyToOne
     private Collezione collezione;
 }

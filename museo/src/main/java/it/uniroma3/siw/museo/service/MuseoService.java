@@ -59,4 +59,9 @@ public class MuseoService {
 		this.collezioneRepository.save(new Collezione("blu"));
 		this.collezioneRepository.save(new Collezione("rosso"));
 	}
+
+	@Transactional
+	public Collezione collezionePerNome(String nome) {
+    	return this.collezioneRepository.findByNome(nome).orElse(null);
+	}
 }

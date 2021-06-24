@@ -20,8 +20,8 @@
                   <span><input type="text" th:field="*{descrizione}" /></span>
               </div>
               <div>
-                  <select name="Collezione">
-                        <option th:each="collezione : ${collezioni}" th:text="${collezione.nome}"></option>
+                  <select name="Collezione" th:field="*{nomeCollezione}">
+                        <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.nome}"   ></option>
                   </select>
               </div>
 
