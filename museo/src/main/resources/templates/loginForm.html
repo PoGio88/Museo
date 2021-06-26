@@ -5,25 +5,25 @@
 <body>
         <header th:replace= "fragments/base.html :: menu">
         </header>
-
-        <div>
-		<h4>Login</h4>
-	</div>
+<div class = "blocco1">
+        <div class="login-box">
+		<h1>Login</h1>
 	<form th:action="@{/login}" method="POST">
-		<div>
-			<div>
+		<div class="textbox">
 				<span>Username:</span>
 				<span><input name="username" type="text" required /></span>
 			</div>		
-			<div>
+			<div class="textbox">
 				<span>Password:</span>
 				<span><input name="password" type="password" required /></span>
 			</div>
 			<div>
-				<span><button type="submit">Login</button></span>
+				<span><button class = "btn" type="submit">Login</button></span>
 			</div>
-		</div>
 	</form>
+		</div>
+</div>
+
         <div id="bloccoinformazioni">Prova</div>
             <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
 
