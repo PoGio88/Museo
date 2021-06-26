@@ -9,6 +9,8 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Entity
+@NamedQuery(name = "Opera.deleteOperaByCollezione", query = "DELETE FROM Opera p WHERE p.collezione = ?1")
+
 public class Opera {
 
     @Id

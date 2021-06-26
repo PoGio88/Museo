@@ -1,7 +1,6 @@
 package it.uniroma3.siw.museo;
 
 
-import com.sun.javaws.progress.PreloaderPostEventListener;
 import it.uniroma3.siw.museo.model.Credentials;
 import it.uniroma3.siw.museo.repository.CredentialsRepository;
 import javafx.scene.canvas.GraphicsContext;

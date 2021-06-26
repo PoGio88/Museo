@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace = "fragments/base.html :: headerfiles">
 </head>
 <body>
+
+     <nav> Menu amministratore </nav>
       <form th:action = "@{/aggiungiOpera}" method="post" th:object = "${opera}">
           <div>
               <div>
@@ -30,6 +30,7 @@
               </div>
           </div>
       </form>
+      <footer th:replace ="fragments/base.html :: fondo('/default')"></footer>
 
 </body>
 </html>

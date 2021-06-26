@@ -10,4 +10,5 @@ public interface CollezioneRepository extends CrudRepository<Collezione, Long>{
 
 
     public Optional<Collezione> findByNome(String nome);
+    
 }
