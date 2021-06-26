@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "fragments/base.html :: headerfiles">
+</head>
+<body>
+        <header th:replace= "fragments/base.html :: menu"></header>
+
+        <div id="Sfondo">
+                <a id="Titolo" href="#bloccocentrale">Museo</a>
+        </div>
+
+        <div id="bloccocentrale">
+            <div id="contenutoprincipale">
+                   <li th:each="opera : ${opere}" th:text="${opera.titolo}">
+                   </li> 
+                    
+            </div>
+        </div>
+
+        <div id="bloccoinformazioni">Prova</div>
+        <footer th:replace ="fragments/base.html :: fondo(home='/')">
+           </footer>
+</body>
+</html>
