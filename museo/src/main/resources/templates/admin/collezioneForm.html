@@ -3,25 +3,25 @@
 <head th:replace = "fragments/base.html :: headerfiles">
 </head>
 <body>
-        <nav> Menu amministratore </nav>
+        <div class = "blocco1">
+ <header th:replace= "fragments/base.html :: menu"></header>
+        <div class="login-box">
+		<h1>Aggiungi Collezione</h1>
          <form th:action = "@{/aggiungiCollezione}" method="post" th:object = "${collezione}">
-          <div>
-              <div>
-                  <span>Nome:</span>
+              <div class="textbox">
+                  <span>Nome</span>
                   <span><input type="text" th:field="*{nome}" /></span>
               </div>
-              <div>
-                  <span>Descrizione:</span>
+              <div class="textbox">
+                  <span>Descrizione</span>
                   <span><input type="text" th:field="*{descrizione}" /></span>
               </div>
-              <div>
+              <div class="textbox">
                   <span><button type="submit">Invio</button></span>
               </div>
           </div>
       </form>
-        <div>
-			<a th:href="@{/logout}">Logout</a>
-   		</div>
+        </div>
    		
         <footer th:replace ="fragments/base.html :: fondo(home='/default')">
            </footer>

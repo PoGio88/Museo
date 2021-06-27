@@ -4,9 +4,14 @@
 </head>
 <body>
 
-     <nav> Menu amministratore </nav>
+     <div class = "blocco1">
+ <header th:replace= "fragments/base.html :: menu"></header>
+        <div class="login-box">
+		<h1>Elimina Collezione</h1>
       <form th:action = "@{/eliminaCollezione}" method="post" th:object = "${collezione}">
-          <div>
+               <span>Scegli la collezione da eliminare</span>
+               <div class="textbox">
+                  <span>Collezione  </span>
             <select name="Collezione" th:field="*{nome}">
                         <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.nome}"   ></option>
                   </select>
@@ -15,8 +20,9 @@
               <div>
                   <span><button type="submit">Invio</button></span>
               </div>
-          </div>
       </form>
+      </div>
+      </div>
       <footer th:replace ="fragments/base.html :: fondo('/default')"></footer>
 
 </body>

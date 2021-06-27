@@ -4,9 +4,14 @@
 </head>
 <body>
 
-     <nav> Menu amministratore </nav>
+     <div class = "blocco1">
+ <header th:replace= "fragments/base.html :: menu"></header>
+        <div class="login-box">
+		<h1>Elimina Opera</h1>
       <form th:action = "@{/eliminaOpera}" method="post" th:object = "${opera}">
-          <div>
+      <span>Scegli l'opera da eliminare</span>
+          <div class="textbox">
+          <span>Opera  </span>
             <select name="Collezione" th:field="*{titolo}">
                         <option th:each="op : ${opere}" th:text="${op.titolo}" th:value="${op.titolo}"   ></option>
                   </select>
@@ -15,8 +20,9 @@
               <div>
                   <span><button type="submit">Invio</button></span>
               </div>
-          </div>
       </form>
+      </div>
+      </div>
       <footer th:replace ="fragments/base.html :: fondo('/default')"></footer>
 
 </body>

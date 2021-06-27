@@ -8,17 +8,16 @@
 <body>
 	<header th:fragment="menu">
 		<nav>
-                <div id = "menu">
-                	<a th:href="@{/visualizzaOpere}"><button>Opere</button></a>
-                	<button>Collezioni</button>
-                	<button>Autori </button>
-               	 	
-                </div>
-            </nav>
+                <ul class = "menu">
+                	<li><a class="elementiMenu" th:href="@{/visualizzaOpere}">Opere</a> </li>
+                	<li> <a class="elementiMenu" href="#">Collezioni</a></li>
+                	<li> <a class="elementiMenu" href="#">Autori</a></li>
+               	 </ul>
+         </nav>
+         <button>Contact</button>
 	</header>
-
 	
-	<footer th:fragment="fondo(home)">
+<footer th:fragment="fondo(home)">
 		<a th:href="@{${home}}">Home</a>
 		<h3>realizzato da Daniele Pica e Giorgio Poggini </h3>
             

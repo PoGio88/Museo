@@ -3,10 +3,12 @@
 <head th:replace = "fragments/base.html :: headerfiles">
 </head>
 <body>
-        <header th:replace= "fragments/base.html :: menu"></header>
+        
 
         <div id="Sfondo">
+        <header th:replace= "fragments/base.html :: menu"></header>
                 <a id="Titolo" href="#bloccocentrale">Museo</a>
+                
         </div>
 
         <div id="bloccocentrale">
@@ -15,9 +17,8 @@
                     <a th:href="@{/register}"> Registrati </a>
             </div>
         </div>
-
-        <div id="bloccoinformazioni">Prova</div>
         <footer th:replace ="fragments/base.html :: fondo(home='/')">
+                
            </footer>
 </body>
 </html>

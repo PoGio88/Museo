@@ -4,22 +4,25 @@
 </head>
 <body>
 
-     <nav> Menu amministratore </nav>
+    <div class = "blocco1">
+ <header th:replace= "fragments/base.html :: menu"></header>
+        <div class="login-box">
+		<h1>Aggiungi Opera</h1>
       <form th:action = "@{/aggiungiOpera}" method="post" th:object = "${opera}">
-          <div>
-              <div>
-                  <span>Nome:</span>
+              <div class = "textbox">
+                  <span>Nome</span>
                   <span><input type="text" th:field="*{titolo}" /></span>
               </div>
-              <div>
-                  <span>Anno:</span>
+              <div class = "textbox">
+                  <span>Anno</span>
                   <span><input type="text" th:field="*{anno}" /></span>
               </div>
-              <div>
-                  <span>Descrizione:</span>
+              <div class = "textbox">
+                  <span>Descrizione</span>
                   <span><input type="text" th:field="*{descrizione}" /></span>
               </div>
-              <div>
+              <div class = "textbox">
+                  <span>Collezione</span>
                   <select name="Collezione" th:field="*{nomeCollezione}">
                         <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.nome}"   ></option>
                   </select>
@@ -28,8 +31,10 @@
               <div>
                   <span><button type="submit">Invio</button></span>
               </div>
-          </div>
       </form>
+        </div>
+    </div>
+        
       <footer th:replace ="fragments/base.html :: fondo('/default')"></footer>
 
 </body>

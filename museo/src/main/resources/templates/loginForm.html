@@ -3,9 +3,9 @@
 <head th:replace = "fragments/base.html :: headerfiles">
 </head>
 <body>
-        <header th:replace= "fragments/base.html :: menu">
-        </header>
+       
 <div class = "blocco1">
+ <header th:replace= "fragments/base.html :: menu"></header>
         <div class="login-box">
 		<h1>Login</h1>
 	<form th:action="@{/login}" method="POST">
@@ -23,9 +23,7 @@
 	</form>
 		</div>
 </div>
-
-        <div id="bloccoinformazioni">Prova</div>
-            <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
+<footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
 
 </body>
 </html>
