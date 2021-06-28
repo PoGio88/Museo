@@ -25,8 +25,10 @@ public class Opera {
 
     private String descrizione;
 
-    /*@ManyToOne
-    private Artista artista;*/
+    @ManyToOne
+    private Artista artista;
+    
+    private String nomeArtista;
 
     private String nomeCollezione;
 

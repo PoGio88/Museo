@@ -82,14 +82,13 @@ public class MuseoService {
 
 	@Transactional
 	public Collezione collezionePerNome(String nome) {
-		return this.collezioneRepository.findByNome(nome).orElse(null);
+		return this.collezioneRepository.findByNome(nome);
 	}
 	
 	@Transactional
 	public boolean collezioneAlreadyExists(Collezione collezione) {
-		List<Collezione> collezioni = (List<Collezione>) this.collezioneRepository.findByNome(collezione.getNome()).orElse(null);
-		
-		if (collezione != null && collezioni.size() > 0)
+		Collezione coll = this.collezioneRepository.findByNome(collezione.getNome());
+		if (coll != null)
 			return true;
 		else 
 			return false;

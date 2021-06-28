@@ -19,6 +19,8 @@
               <div class="textbox">
                   <span>Descrizione</span>
                   <span><input type="text" th:field="*{descrizione}" /></span>
+                                    <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+
               </div>
               <div class="textbox">
                   <span><button type="submit">Invio</button></span>
