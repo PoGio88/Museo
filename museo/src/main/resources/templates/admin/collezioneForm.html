@@ -8,9 +8,13 @@
         <div class="login-box">
 		<h1>Aggiungi Collezione</h1>
          <form th:action = "@{/aggiungiCollezione}" method="post" th:object = "${collezione}">
+         <div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
               <div class="textbox">
                   <span>Nome</span>
                   <span><input type="text" th:field="*{nome}" /></span>
+                  <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
               </div>
               <div class="textbox">
                   <span>Descrizione</span>

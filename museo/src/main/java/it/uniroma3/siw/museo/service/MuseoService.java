@@ -6,7 +6,6 @@ import it.uniroma3.siw.museo.repository.ArtistaRepository;
 import it.uniroma3.siw.museo.repository.CollezioneRepository;
 import it.uniroma3.siw.museo.repository.OperaRepository;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -84,5 +83,15 @@ public class MuseoService {
 	@Transactional
 	public Collezione collezionePerNome(String nome) {
 		return this.collezioneRepository.findByNome(nome).orElse(null);
+	}
+	
+	@Transactional
+	public boolean collezioneAlreadyExists(Collezione collezione) {
+		List<Collezione> collezioni = (List<Collezione>) this.collezioneRepository.findByNome(collezione.getNome()).orElse(null);
+		
+		if (collezione != null && collezioni.size() > 0)
+			return true;
+		else 
+			return false;
 	}
 }

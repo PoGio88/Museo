@@ -11,7 +11,7 @@
     <table>
         <tr>
             <td>Username</td>
-            <td><input type="text" placeholder="username" required
+            <td><input type="text" placeholder="username" 
                        th:field="${credentials.username}"/></td>
             <td th:if="${#fields.hasErrors('credentials.username')}"
                 th:errors="${credentials.username}" th:style="'color:red'"></td>

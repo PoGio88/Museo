@@ -3,6 +3,7 @@ package it.uniroma3.siw.museo.validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import it.uniroma3.siw.museo.model.Credentials;
@@ -25,6 +26,7 @@ public class CredentialsValidator implements Validator {
         Credentials credentials = (Credentials) o;
         String username = credentials.getUsername().trim();
         String password = credentials.getPassword().trim();
+        
 
         if (username.isEmpty())
             errors.rejectValue("username", "required");

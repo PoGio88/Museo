@@ -4,9 +4,12 @@ package it.uniroma3.siw.museo.controller;
 import it.uniroma3.siw.museo.model.Collezione;
 import it.uniroma3.siw.museo.model.Opera;
 import it.uniroma3.siw.museo.service.MuseoService;
+import it.uniroma3.siw.museo.validator.CollezioneValidator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +19,8 @@ public class AmministratoreController {
 
     @Autowired
     private MuseoService service;
+    @Autowired
+    private CollezioneValidator collezioneValidator;
 
     @RequestMapping(value = "/aggiungiOpera", method = RequestMethod.GET)
     public String aggiungiOpera(Model model) {
@@ -37,9 +42,12 @@ public class AmministratoreController {
     }
 
     @RequestMapping(value = "/aggiungiCollezione", method = RequestMethod.POST)
-    public String aggiungiCollezione(@ModelAttribute("collezione") Collezione collezione, Model model){
-        service.inserisciCollezione(collezione);
-        return "admin/home.html";
+    public String aggiungiCollezione(@ModelAttribute("collezione") Collezione collezione, Model model, BindingResult bindingResult){
+    	this.collezioneValidator.validate(collezione, bindingResult);
+        if (!bindingResult.hasErrors()) {
+        	this.service.inserisciCollezione(collezione);
+        }
+        return "admin/collezioneForm.html";
     }
     
     @RequestMapping(value = "/eliminaCollezione", method = RequestMethod.GET)
