@@ -6,7 +6,6 @@ import it.uniroma3.siw.museo.model.Opera;
 import it.uniroma3.siw.museo.service.MuseoService;
 import it.uniroma3.siw.museo.validator.CollezioneValidator;
 
-import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -88,6 +87,9 @@ public class AmministratoreController {
         service.eliminaOpera(service.operaPerTitolo(opera.getTitolo()));
         return "admin/home.html";
     }
+    
+    
+
     
     
     

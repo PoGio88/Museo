@@ -12,6 +12,7 @@
         <div id="bloccocentrale">
             <div id="contenutoprincipale">
                    <li th:each="opera : ${opere}" th:text="${opera.titolo}">
+                   <img th:src="@{${opera.PhotosImagePath}}" />
                    </li> 
                     
             </div>
