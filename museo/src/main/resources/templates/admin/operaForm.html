@@ -8,7 +8,7 @@
  <header th:replace= "fragments/base.html :: menu"></header>
         <div class="login-box">
 		<h1>Aggiungi Opera</h1>
-      <form th:action = "@{/aggiungiOpera}" method="post" th:object = "${opera}">
+      <form th:action = "@{/aggiungiOpera}" method="post" th:object = "${opera}" enctype="multipart/form-data">
               <div class = "textbox">
                   <span>Nome</span>
                   <span><input type="text" th:field="*{titolo}" /></span>
@@ -27,7 +27,8 @@
                         <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.nome}"   ></option>
                   </select>
               </div>
-
+              <input type ="file" name = "immagine" accept="image/png, image/jpeg"/>
+             
               <div>
                   <span><button type="submit">Invio</button></span>
               </div>

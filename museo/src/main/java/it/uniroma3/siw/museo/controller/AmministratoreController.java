@@ -6,13 +6,19 @@ import it.uniroma3.siw.museo.model.Opera;
 import it.uniroma3.siw.museo.service.MuseoService;
 import it.uniroma3.siw.museo.validator.CollezioneValidator;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 
 @Controller
 public class AmministratoreController {
@@ -30,9 +36,14 @@ public class AmministratoreController {
     }
 
     @RequestMapping(value = "/aggiungiOpera", method = RequestMethod.POST)
-    public String aggiungiOpera(@ModelAttribute("opera") Opera opera, Model model){
+    public String aggiungiOpera(@ModelAttribute("opera") Opera opera, @RequestParam("immagine") MultipartFile immagine, Model model) throws Exception{
         opera.setCollezione(service.collezionePerNome(opera.getNomeCollezione()));
-        service.inserisciOpera(opera);
+        
+        String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
+        opera.setFoto(fileName);
+        Opera operaSalvata = service.inserisciOpera(opera);
+        String uploadDir = "user-photos/" + operaSalvata.getId();
+        service.saveImage(uploadDir,fileName,immagine);
         return "admin/home.html";
     }
     @RequestMapping(value = "/aggiungiCollezione", method = RequestMethod.GET)
@@ -47,7 +58,7 @@ public class AmministratoreController {
         if (!bindingResult.hasErrors()) {
         	this.service.inserisciCollezione(collezione);
         }
-        return "admin/collezioneForm.html";
+        return "admin/home.html";
     }
     
     @RequestMapping(value = "/eliminaCollezione", method = RequestMethod.GET)
@@ -77,6 +88,8 @@ public class AmministratoreController {
         service.eliminaOpera(service.operaPerTitolo(opera.getTitolo()));
         return "admin/home.html";
     }
+    
+    
     
 
 }

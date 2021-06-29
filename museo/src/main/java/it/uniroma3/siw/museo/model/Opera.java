@@ -13,25 +13,32 @@ import javax.persistence.*;
 
 public class Opera {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 
-    @Column(nullable = false)
-    
-    private String titolo;
+	@Column(nullable = false)
 
-    private int anno;  //dobbiamo capire che tipo mettere
+	private String titolo;
 
-    private String descrizione;
+	private int anno;  //dobbiamo capire che tipo mettere
 
-    @ManyToOne
-    private Artista artista;
-    
-    private String nomeArtista;
+	private String descrizione;
 
-    private String nomeCollezione;
+	/*@ManyToOne
+    private Artista artista;*/
 
-    @ManyToOne
-    private Collezione collezione;
+	@Column(nullable = true, length = 64)
+	private String foto;
+
+	private String nomeCollezione;
+
+	@ManyToOne
+	private Collezione collezione;
+
+	@Transient
+	public String getPhotosImagePath() {
+		if (foto == null) return null;
+		return "/user-photos/" + id + "/" + foto;
+	}
 }

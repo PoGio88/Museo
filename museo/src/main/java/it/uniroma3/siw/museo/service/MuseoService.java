@@ -6,13 +6,23 @@ import it.uniroma3.siw.museo.repository.ArtistaRepository;
 import it.uniroma3.siw.museo.repository.CollezioneRepository;
 import it.uniroma3.siw.museo.repository.OperaRepository;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Optional;
 
+
+
+import org.apache.tomcat.jni.File;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class MuseoService {
@@ -93,4 +103,21 @@ public class MuseoService {
 		else 
 			return false;
 	}
+	public void saveImage(String uploadDir, String fileName, MultipartFile immagine) throws Exception {
+		
+		Path uploadPath = Paths.get(uploadDir);
+        
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+         
+        try (InputStream inputStream = immagine.getInputStream()) {
+            Path filePath = uploadPath.resolve(fileName);
+            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ioe) {        
+            throw new IOException("Could not save image file: " + fileName, ioe);
+        }      
+    }
+	
+	
 }
