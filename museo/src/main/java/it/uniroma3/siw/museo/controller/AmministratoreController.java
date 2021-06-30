@@ -41,7 +41,7 @@ public class AmministratoreController {
         String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
         opera.setFoto(fileName);
         Opera operaSalvata = service.inserisciOpera(opera);
-        String uploadDir = "user-photos/" + operaSalvata.getId();
+        String uploadDir = "src/main/resources/static/images/user-photos/" + operaSalvata.getId();
         service.saveImage(uploadDir,fileName,immagine);
         return "admin/home.html";
     }

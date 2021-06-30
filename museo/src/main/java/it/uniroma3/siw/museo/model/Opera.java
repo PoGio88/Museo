@@ -39,6 +39,6 @@ public class Opera {
 	@Transient
 	public String getPhotosImagePath() {
 		if (foto == null) return null;
-		return "/user-photos/" + id + "/" + foto;
+		return "/images/user-photos/" + id + "/" + foto;
 	}
 }
