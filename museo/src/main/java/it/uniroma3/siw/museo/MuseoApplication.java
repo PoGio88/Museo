@@ -12,5 +12,7 @@ public class MuseoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MuseoApplication.class, args);
 	}
+	
+	//capire che valore dare a dataMorte e dataNascita nella classe artista
 
 }

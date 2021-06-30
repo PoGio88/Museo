@@ -7,13 +7,13 @@
      <div class = "blocco1">
  <header th:replace= "fragments/base.html :: menu"></header>
         <div class="login-box">
-		<h1>Elimina Opera</h1>
-      <form th:action = "@{/eliminaOpera}" method="post" th:object = "${opera}">
-      <span>Scegli l'opera da eliminare</span>
+		<h1>Elimina Artista</h1>
+      <form th:action = "@{/eliminaArtista}" method="post" th:object = "${artista}">
+      <span>Scegli l'artista da eliminare</span>
           <div class="textbox">
-          <span>Opera  </span>
-            <select name="Opere" th:field="*{titolo}">
-                        <option th:each="op : ${opere}" th:text="${op.titolo}" th:value="${op.titolo}"   ></option>
+          <span>Artista  </span>
+            <select name="Artista" th:field="*{nomeCompleto}">
+                        <option th:each="art : ${artisti}" th:text="|${art.nome} ${art.cognome}|" th:value="|${art.nome} ${art.cognome}|"   ></option>
                   </select>
               </div>
 

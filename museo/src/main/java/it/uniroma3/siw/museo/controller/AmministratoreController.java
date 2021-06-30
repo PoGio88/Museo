@@ -1,9 +1,11 @@
 package it.uniroma3.siw.museo.controller;
 
 
+import it.uniroma3.siw.museo.model.Artista;
 import it.uniroma3.siw.museo.model.Collezione;
 import it.uniroma3.siw.museo.model.Opera;
 import it.uniroma3.siw.museo.service.MuseoService;
+import it.uniroma3.siw.museo.validator.ArtistaValidator;
 import it.uniroma3.siw.museo.validator.CollezioneValidator;
 
 
@@ -24,27 +26,56 @@ public class AmministratoreController {
 
     @Autowired
     private MuseoService service;
+    
     @Autowired
     private CollezioneValidator collezioneValidator;
+    
+    @Autowired
+    private ArtistaValidator artistaValidator;
 
     @RequestMapping(value = "/aggiungiOpera", method = RequestMethod.GET)
     public String aggiungiOpera(Model model) {
         model.addAttribute("opera", new Opera());
         model.addAttribute("collezioni",this.service.tutteLeCollezioni());
+        model.addAttribute("artisti", this.service.tuttiGliArtisti());
         return "admin/operaForm.html";
     }
 
     @RequestMapping(value = "/aggiungiOpera", method = RequestMethod.POST)
     public String aggiungiOpera(@ModelAttribute("opera") Opera opera, @RequestParam("immagine") MultipartFile immagine, Model model) throws Exception{
         opera.setCollezione(service.collezionePerNome(opera.getNomeCollezione()));
+        opera.setArtista(service.artistaPerNomeECognome(opera.getNomeArtista()));
         
         String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
         opera.setFoto(fileName);
         Opera operaSalvata = service.inserisciOpera(opera);
-        String uploadDir = "src/main/resources/static/images/user-photos/" + operaSalvata.getId();
+        String uploadDir = "src/main/resources/static/images/foto-opere/" + operaSalvata.getId();
+        service.saveImage(uploadDir,fileName,immagine);
+        
+        return "admin/home.html";
+    }
+    
+    @RequestMapping(value = "/aggiungiArtista", method = RequestMethod.GET)
+    public String aggiungiArtista(Model model) {
+        model.addAttribute("artista", new Artista());
+        return "admin/artistaForm.html";
+    }
+
+    @RequestMapping(value = "/aggiungiArtista", method = RequestMethod.POST)
+    public String aggiungiArtista(@ModelAttribute("artista") Artista artista, @RequestParam("immagine") MultipartFile immagine, Model model, BindingResult bindingResult) throws Exception{
+        this.artistaValidator.validate(artista, bindingResult);
+        if (!bindingResult.hasErrors()) {
+        String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
+        artista.setFoto(fileName);
+        Artista artistaSalvato = service.inserisciArtista(artista);
+        String uploadDir = "src/main/resources/static/images/foto-artisti/" + artistaSalvato.getId();
         service.saveImage(uploadDir,fileName,immagine);
         return "admin/home.html";
     }
+        return "admin/artistaForm";
+    }
+    
+    
     @RequestMapping(value = "/aggiungiCollezione", method = RequestMethod.GET)
     public String aggiungiCollezione(Model model) {
         model.addAttribute("collezione", new Collezione());
@@ -56,8 +87,9 @@ public class AmministratoreController {
     	this.collezioneValidator.validate(collezione, bindingResult);
         if (!bindingResult.hasErrors()) {
         	this.service.inserisciCollezione(collezione);
+        	return "admin/home.html";
         }
-        return "admin/home.html";
+        return "admin/collezioneForm.html";
     }
     
     @RequestMapping(value = "/eliminaCollezione", method = RequestMethod.GET)
@@ -71,6 +103,21 @@ public class AmministratoreController {
     public String eliminaCollezione(@ModelAttribute("collezione") Collezione collezione, Model model){
     	service.eliminaOpereDaCollezione(service.collezionePerNome(collezione.getNome()));
         service.eliminaCollezione(service.collezionePerNome(collezione.getNome()));
+        return "admin/home.html";
+    }
+    
+    @RequestMapping(value = "/eliminaArtista", method = RequestMethod.GET)
+    public String eliminaArtista(Model model) {
+        model.addAttribute("artisti", this.service.tuttiGliArtisti());
+        model.addAttribute("artista", new Artista());
+        return "admin/eliminaArtista.html";
+    }
+
+    @RequestMapping(value = "/eliminaArtista", method = RequestMethod.POST)
+    public String eliminaArtista(@ModelAttribute("artista") Artista artista, Model model){
+    	Artista artistaDaEliminare = service.artistaPerNomeECognome(artista.getNomeCompleto());
+    	service.elminaOpereDiArtista(artistaDaEliminare);
+        service.eliminaArtista(artistaDaEliminare);
         return "admin/home.html";
     }
     

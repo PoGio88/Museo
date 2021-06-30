@@ -8,4 +8,6 @@ import java.util.List;
 public interface ArtistaRepository extends CrudRepository<Artista, Long> {
 
     public List<Artista> findByNome(String nome);
+    
+    public Artista findByNomeAndCognome(String nome, String cognome);
 }

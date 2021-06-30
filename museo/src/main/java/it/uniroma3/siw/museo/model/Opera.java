@@ -10,6 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @NamedQuery(name = "Opera.deleteOperaByCollezione", query = "DELETE FROM Opera p WHERE p.collezione = ?1")
+@NamedQuery(name = "Opera.deleteOpereByArtista", query = "DELETE FROM Opera p WHERE p.artista = ?1")
 
 public class Opera {
 
@@ -25,13 +26,15 @@ public class Opera {
 
 	private String descrizione;
 
-	/*@ManyToOne
-    private Artista artista;*/
+	@ManyToOne
+    private Artista artista;
 
 	@Column(nullable = true, length = 64)
 	private String foto;
 
 	private String nomeCollezione;
+	
+	private String nomeArtista;
 
 	@ManyToOne
 	private Collezione collezione;
@@ -39,6 +42,6 @@ public class Opera {
 	@Transient
 	public String getPhotosImagePath() {
 		if (foto == null) return null;
-		return "/images/user-photos/" + id + "/" + foto;
+		return "/images/foto-opere/" + id + "/" + foto;
 	}
 }

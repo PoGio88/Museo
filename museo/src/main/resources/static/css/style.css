@@ -63,7 +63,7 @@ button:hover {
   font-family: sans-serif;
   background: url(/images/louvre-login.jpg) no-repeat;
   background-size: cover;
-  height:800px;
+  height:900px;
 }
 
 html {
@@ -132,7 +132,7 @@ footer a{
 .login-box{
   width: 400px;
   position: absolute;
-  top: 40%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%,-50%);
   color: white;

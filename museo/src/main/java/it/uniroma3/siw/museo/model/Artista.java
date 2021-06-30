@@ -23,14 +23,24 @@ public class Artista {
 
     private String luogoNascita;
 
-    private Date dataNascita;    //controllare tipo
+    private String dataNascita;    //controllare tipo
 
     private String luogoMorte;
 
-    private Date dataMorte;    //controllare tipo
+    private String dataMorte;    //controllare tipo
 
     private String nazionalita;
+    
+    private String foto;
+    
+    private String nomeCompleto;
 
-    /*@OneToMany ( mappedBy = "artista" )
-    private List<Opera> opere;*/
+    @OneToMany ( mappedBy = "artista" )
+    private List<Opera> opere;
+    
+    @Transient
+	public String getPhotosImagePath() {
+		if (foto == null) return null;
+		return "/images/foto-artisti/" + id + "/" + foto;
+	}
 }

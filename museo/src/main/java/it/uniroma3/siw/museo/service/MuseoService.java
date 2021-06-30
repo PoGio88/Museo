@@ -1,5 +1,6 @@
 package it.uniroma3.siw.museo.service;
 
+import it.uniroma3.siw.museo.model.Artista;
 import it.uniroma3.siw.museo.model.Collezione;
 import it.uniroma3.siw.museo.model.Opera;
 import it.uniroma3.siw.museo.repository.ArtistaRepository;
@@ -14,8 +15,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Optional;
-
-
+import java.util.Scanner;
 
 import org.apache.tomcat.jni.File;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +50,10 @@ public class MuseoService {
 	public List<Collezione> tutteLeCollezioni() {
 		return (List<Collezione>) collezioneRepository.findAll();
 	}
+	@Transactional
+	public List<Artista> tuttiGliArtisti() {
+		return (List<Artista>) artistaRepository.findAll();
+	}
 
 	@Transactional
 	public Collezione collezionePerId(Long id) {
@@ -64,10 +68,8 @@ public class MuseoService {
 	}
 
 	@Transactional
-	public void provaInserisciCollezioni() {
-		this.collezioneRepository.save(new Collezione("ciao"));
-		this.collezioneRepository.save(new Collezione("blu"));
-		this.collezioneRepository.save(new Collezione("rosso"));
+	public Artista inserisciArtista(Artista artista) {
+		return artistaRepository.save(artista);
 	}
 
 	@Transactional
@@ -118,6 +120,41 @@ public class MuseoService {
             throw new IOException("Could not save image file: " + fileName, ioe);
         }      
     }
+
+	@Transactional
+	public Artista artistaPerNomeECognome(String nomeArtista) {
+		Scanner stringa = new Scanner(nomeArtista);
+		String nome = null;
+		String cognome = null;
+		if(stringa.hasNext())
+		nome = stringa.next();
+		if(stringa.hasNext())
+	    cognome = stringa.next();
+		if(stringa.hasNext())
+		cognome = cognome + " "+ stringa.next();
+		return this.artistaRepository.findByNomeAndCognome(nome, cognome);
+	}
+
+	@Transactional
+	public void elminaOpereDiArtista(Artista artistaDaEliminare) {
+		this.operaRepository.deleteOpereByArtista(artistaDaEliminare);
+		
+	}
+
+	@Transactional
+	public void eliminaArtista(Artista artistaDaEliminare) {
+		this.artistaRepository.delete(artistaDaEliminare);
+		}
+
+	@Transactional
+	public boolean artistaAlreadyExists(Artista artista) {
+		Artista art = this.artistaRepository.findByNomeAndCognome(artista.getNome(), artista.getCognome());
+		if (art != null)
+			return true;
+		else 
+			return false;
+	}
+	
 	
 	
 }

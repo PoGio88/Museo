@@ -22,13 +22,21 @@
                   <span><input type="text" th:field="*{descrizione}" /></span>
               </div>
               <div class = "textbox">
+                  <span>Artista</span>
+                  <select name="artista" th:field="*{nomeArtista}">
+                        <option th:each="art : ${artisti}" th:text="|${art.nome} ${art.cognome}|" th:value="|${art.nome} ${art.cognome}|"   ></option>
+                  </select>
+              </div>
+              <div class = "textbox">
                   <span>Collezione</span>
                   <select name="Collezione" th:field="*{nomeCollezione}">
                         <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.nome}"   ></option>
                   </select>
               </div>
-              <input type ="file" name = "immagine"/>
-             
+              <div class = "textbox">
+                  <span>Foto opera</span>
+              <input type ="file" name = "immagine" required/>
+              </div>
               <div>
                   <span><button type="submit">Invio</button></span>
               </div>
