@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
 @Entity
 public class Curatore {
 

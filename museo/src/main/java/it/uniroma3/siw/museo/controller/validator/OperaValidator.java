@@ -1,4 +1,4 @@
-package it.uniroma3.siw.museo.validator;
+package it.uniroma3.siw.museo.controller.validator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +29,7 @@ public void validate(Object o, Errors errors) {
 
 	if (!errors.hasErrors()) {
 		logger.debug("confermato: valori non nulli");
-		if (this.museoService.collezioneAlreadyExists((Collezione)o)) {
+		if (this.museoService.collezioneGiaPresente((Collezione)o)) {
 			logger.debug("e' un duplicato");
 			errors.reject("duplicatoCollezione");
 		}

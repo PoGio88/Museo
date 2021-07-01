@@ -19,18 +19,18 @@
               </div>
               <div class = "textbox">
                   <span>Descrizione</span>
-                  <span><input type="text" th:field="*{descrizione}" /></span>
+                  <span><textarea type="text" th:field="*{descrizione}" /></span>
               </div>
               <div class = "textbox">
                   <span>Artista</span>
-                  <select name="artista" th:field="*{nomeArtista}">
-                        <option th:each="art : ${artisti}" th:text="|${art.nome} ${art.cognome}|" th:value="|${art.nome} ${art.cognome}|"   ></option>
+                  <select name="artista" th:field="*{artista}">
+                        <option th:each="art : ${artisti}" th:text="|${art.nome} ${art.cognome}|" th:value="${art.id}"></option>
                   </select>
               </div>
               <div class = "textbox">
                   <span>Collezione</span>
-                  <select name="Collezione" th:field="*{nomeCollezione}">
-                        <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.nome}"   ></option>
+                  <select name="Collezione" th:field="*{collezione}">
+                        <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.id}"></option>
                   </select>
               </div>
               <div class = "textbox">

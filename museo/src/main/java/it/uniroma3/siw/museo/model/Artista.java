@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
 @Entity
 public class Artista {
 
@@ -32,8 +31,6 @@ public class Artista {
     private String nazionalita;
     
     private String foto;
-    
-    private String nomeCompleto;
 
     @OneToMany ( mappedBy = "artista" )
     private List<Opera> opere;

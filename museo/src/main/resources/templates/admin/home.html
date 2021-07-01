@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace = "fragments/base.html :: headerfiles">
+<head th:replace="fragments/base.html :: headerfiles">
 </head>
 <body>
-        <div class = "blocco1">
-        <header th:replace= "fragments/base.html :: menu"></header>
-                        <a id="Titolo" href="#bloccocentrale">Menu Amministratore</a>
+<div class="blocco1">
+    <header th:replace="fragments/base.html :: menu"></header>
+    <a id="Titolo" href="#bloccocentrale">Menu Amministratore</a>
 
-        <div class ="bloccoOperazioni">
+    <div class="bloccoOperazioni">
         <a href="aggiungiOpera"> Inserisci Opera </a>
+        <a href="eliminaOpera"> Elimina opera </a>
         <a href="aggiungiCollezione"> Nuova Collezione </a>
         <a href="eliminaCollezione"> Elimina collezione </a>
-        <a href="eliminaOpera"> Elimina opera </a>
         <a href="aggiungiArtista"> Aggiungi artista </a>
-        <a href="eliminaArtista"> Elimina artista </a>
 
 
-        </div>
-        
-        <div class ="logOut">
-			<a th:href="@{/logout}">Logout</a>
-   		</div>
-        </div>
-        <footer th:replace ="fragments/base.html :: fondo(home='/default')">
-           </footer>
+    </div>
+
+    <div class="logOut">
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+</div>
+<footer th:replace="fragments/base.html :: fondo(home='/default')">
+</footer>
 </body>
 </html>
 

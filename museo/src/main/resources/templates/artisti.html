@@ -6,24 +6,20 @@
         <header th:replace= "fragments/base.html :: menu"></header>
 
         <div id="Sfondo">
-                <a id="Titolo" href="#bloccocentrale">Museo</a>
+                <a id="Titolo" href="#bloccocentrale">Artisti</a>
         </div>
 
         <div id="bloccocentrale">
-            <div id="contenutoprincipale">
-                   <div th:each="artista : ${artisti}">
-                    <div th:text="${artista.nome}">Nome artista  </div>
-                    <div th:text="${artista.cognome}">Cognome artista  </div>
-                    <div th:text="${artista.nazionalita}">Nazionalita artista  </div>
+            <div id="contenutoprincipale-artisti">
+                <div th:each="artista : ${artisti}" >
+                    <div th:replace="fragments/base.html :: artista(artistaDaVisualizzare = ${artista})">
 
-                    <div th:text = "${artista.photosImagePath}"> Percorso foto </div>
-                   <img th:src="@{${artista.photosImagePath}}" width="100" height="200"/>
-                   </div> 
+                    </div>
+                </div>
                     
             </div>
         </div>
 
-        <div id="bloccoinformazioni">Prova</div>
         <footer th:replace ="fragments/base.html :: fondo(home='/')">
            </footer>
 </body>

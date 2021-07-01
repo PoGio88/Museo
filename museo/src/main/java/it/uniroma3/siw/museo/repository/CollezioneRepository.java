@@ -4,12 +4,12 @@ import org.springframework.data.repository.CrudRepository;
 
 import it.uniroma3.siw.museo.model.Collezione;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface CollezioneRepository extends CrudRepository<Collezione, Long>{
 
+    public Optional<Collezione> findById(Long id);
 
-    public Collezione findByNome(String nome);
+    public Optional<Collezione> findByNome(String nome);
     
 }

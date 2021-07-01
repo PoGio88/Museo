@@ -1,13 +1,12 @@
-package it.uniroma3.siw.museo.validator;
+package it.uniroma3.siw.museo.controller.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import it.uniroma3.siw.museo.model.Credentials;
-import it.uniroma3.siw.museo.model.Utente;
+import it.uniroma3.siw.museo.model.Amministratore;
 import it.uniroma3.siw.museo.service.CredentialsService;
 
 @Component
@@ -43,7 +42,7 @@ public class CredentialsValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return Utente.class.equals(clazz);
+        return Amministratore.class.equals(clazz);
     }
 
 }

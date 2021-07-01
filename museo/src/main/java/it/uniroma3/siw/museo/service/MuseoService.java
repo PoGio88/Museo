@@ -17,9 +17,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-import org.apache.tomcat.jni.File;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -47,12 +45,29 @@ public class MuseoService {
 	}
 
 	@Transactional
+	public Opera operaPerId(Long id) {
+		Optional<Opera> optional = operaRepository.findById(id);
+		return optional.orElse(null);
+	}
+
+	@Transactional
+	public List<Opera> operePerArtista(Artista artista) {
+		return operaRepository.findByArtista(artista);
+	}
+
+	@Transactional
+	public void eliminaOpera(Opera opera) {
+		operaRepository.delete(opera);
+	}
+
+	@Transactional
+	public Collezione inserisciCollezione(Collezione collezione) {
+		return collezioneRepository.save(collezione);
+	}
+
+	@Transactional
 	public List<Collezione> tutteLeCollezioni() {
 		return (List<Collezione>) collezioneRepository.findAll();
-	}
-	@Transactional
-	public List<Artista> tuttiGliArtisti() {
-		return (List<Artista>) artistaRepository.findAll();
 	}
 
 	@Transactional
@@ -62,9 +77,15 @@ public class MuseoService {
 	}
 
 	@Transactional
-	public Opera operaPerTitolo(String titolo) {
-		Optional<Opera> optional = operaRepository.findByTitolo(titolo);
-		return optional.orElse(null);
+	public void eliminaCollezione(Collezione collezione) {
+		collezioneRepository.delete(collezione);
+		operaRepository.deleteOpereByCollezione(collezione);
+	}
+
+	@Transactional
+	public boolean collezioneGiaPresente(Collezione collezione) {
+		Optional<Collezione> coll = this.collezioneRepository.findByNome(collezione.getNome());
+		return coll.isPresent();
 	}
 
 	@Transactional
@@ -73,38 +94,22 @@ public class MuseoService {
 	}
 
 	@Transactional
-	public Collezione inserisciCollezione(Collezione collezione) {
-		return collezioneRepository.save(collezione);
+	public List<Artista> tuttiGliArtisti() {
+		return (List<Artista>) artistaRepository.findAll();
 	}
 
 	@Transactional
-	public void eliminaCollezione(Collezione collezione) {
-		collezioneRepository.delete(collezione);
-	}
-	
-	@Transactional
-	public void eliminaOpera(Opera opera) {
-		operaRepository.delete(opera);
+	public Artista artistaPerId(Long id) {
+		Optional<Artista> artista = artistaRepository.findById(id);
+		return artista.orElse(null);
 	}
 
 	@Transactional
-	public void eliminaOpereDaCollezione(Collezione collezione) {
-		operaRepository.deleteOperaByCollezione(collezione);
+	public boolean artistaGiaPresente(Artista artista) {
+		Optional<Artista> art = this.artistaRepository.findByNomeAndCognome(artista.getNome(), artista.getCognome());
+		return art.isPresent();
 	}
 
-	@Transactional
-	public Collezione collezionePerNome(String nome) {
-		return this.collezioneRepository.findByNome(nome);
-	}
-	
-	@Transactional
-	public boolean collezioneAlreadyExists(Collezione collezione) {
-		Collezione coll = this.collezioneRepository.findByNome(collezione.getNome());
-		if (coll != null)
-			return true;
-		else 
-			return false;
-	}
 	public void saveImage(String uploadDir, String fileName, MultipartFile immagine) throws Exception {
 		
 		Path uploadPath = Paths.get(uploadDir);
@@ -121,40 +126,4 @@ public class MuseoService {
         }      
     }
 
-	@Transactional
-	public Artista artistaPerNomeECognome(String nomeArtista) {
-		Scanner stringa = new Scanner(nomeArtista);
-		String nome = null;
-		String cognome = null;
-		if(stringa.hasNext())
-		nome = stringa.next();
-		if(stringa.hasNext())
-	    cognome = stringa.next();
-		if(stringa.hasNext())
-		cognome = cognome + " "+ stringa.next();
-		return this.artistaRepository.findByNomeAndCognome(nome, cognome);
-	}
-
-	@Transactional
-	public void elminaOpereDiArtista(Artista artistaDaEliminare) {
-		this.operaRepository.deleteOpereByArtista(artistaDaEliminare);
-		
-	}
-
-	@Transactional
-	public void eliminaArtista(Artista artistaDaEliminare) {
-		this.artistaRepository.delete(artistaDaEliminare);
-		}
-
-	@Transactional
-	public boolean artistaAlreadyExists(Artista artista) {
-		Artista art = this.artistaRepository.findByNomeAndCognome(artista.getNome(), artista.getCognome());
-		if (art != null)
-			return true;
-		else 
-			return false;
-	}
-	
-	
-	
 }

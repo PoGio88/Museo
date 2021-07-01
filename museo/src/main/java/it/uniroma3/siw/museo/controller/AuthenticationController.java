@@ -1,9 +1,6 @@
 package it.uniroma3.siw.museo.controller;
 
-import it.uniroma3.siw.museo.repository.CredentialsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,11 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.uniroma3.siw.museo.validator.CredentialsValidator;
-import it.uniroma3.siw.museo.validator.UtenteValidator;
+import it.uniroma3.siw.museo.controller.validator.CredentialsValidator;
+import it.uniroma3.siw.museo.controller.validator.UtenteValidator;
 import it.uniroma3.siw.museo.service.CredentialsService;
 import it.uniroma3.siw.museo.model.Credentials;
-import it.uniroma3.siw.museo.model.Utente;
+import it.uniroma3.siw.museo.model.Amministratore;
 
 @Controller
 public class AuthenticationController {
@@ -33,7 +30,7 @@ public class AuthenticationController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET) 
 	public String showRegisterForm (Model model) {
-		model.addAttribute("user", new Utente());
+		model.addAttribute("user", new Amministratore());
 		model.addAttribute("credentials", new Credentials());
 		return "registerForm";
 	}
@@ -54,7 +51,7 @@ public class AuthenticationController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String registerUser(@ModelAttribute("user") Utente user,
+    public String registerUser(@ModelAttribute("user") Amministratore user,
                  BindingResult userBindingResult,
                  @ModelAttribute("credentials") Credentials credentials,
                  BindingResult credentialsBindingResult,
@@ -68,7 +65,7 @@ public class AuthenticationController {
         if(!userBindingResult.hasErrors() && ! credentialsBindingResult.hasErrors()) {
             // set the user and store the credentials;
             // this also stores the User, thanks to Cascade.ALL policy
-            credentials.setUtente(user);
+            credentials.setAmministratore(user);
             credentialsService.saveCredentials(credentials);
             return "registrationSuccessful";
         }

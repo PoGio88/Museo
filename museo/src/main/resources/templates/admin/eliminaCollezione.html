@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace = "fragments/base.html :: headerfiles">
+<head th:replace="fragments/base.html :: headerfiles">
 </head>
 <body>
 
-     <div class = "blocco1">
- <header th:replace= "fragments/base.html :: menu"></header>
-        <div class="login-box">
-		<h1>Elimina Collezione</h1>
-      <form th:action = "@{/eliminaCollezione}" method="post" th:object = "${collezione}">
-               <span>Scegli la collezione da eliminare</span>
-               <div class="textbox">
-                  <span>Collezione  </span>
-            <select name="Collezione" th:field="*{nome}">
-                        <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.nome}"   ></option>
-                  </select>
-              </div>
+<div class="blocco1">
+    <header th:replace="fragments/base.html :: menu"></header>
+    <div class="login-box">
+        <h1>Elimina Collezione</h1>
+        <form th:action="@{/eliminaCollezione}" method="post" th:object="${collezione}">
+            <span>Scegli la collezione da eliminare</span>
+            <div class="textbox">
+                <span>Collezione  </span>
+                <select name="Collezione" th:field="*{nome}">
+                    <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.id}"></option>
+                </select>
+            </div>
 
-              <div>
-                  <span><button type="submit">Invio</button></span>
-              </div>
-      </form>
-      </div>
-      </div>
-      <footer th:replace ="fragments/base.html :: fondo('/default')"></footer>
+            <div>
+                <span><button type="submit">Invio</button></span>
+            </div>
+        </form>
+    </div>
+</div>
+<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
 
 </body>
 </html>

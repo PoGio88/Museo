@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0px;
@@ -24,7 +27,8 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	}
+    position: fixed;
+}
 
 .menu {
 	list-style: none;
@@ -63,7 +67,7 @@ button:hover {
   font-family: sans-serif;
   background: url(/images/louvre-login.jpg) no-repeat;
   background-size: cover;
-  height:900px;
+  height: 900px;
 }
 
 html {
@@ -72,7 +76,7 @@ html {
 
 
 #Sfondo {
-    height: 800px;
+    height: 900px;
     background-image: url(/images/louvre.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -88,22 +92,30 @@ html {
 
 #bloccocentrale {
     height: 500px;
-    display: flex;
+    display: inline-flex;
     justify-content: flex-start;
     border-radius: 5%;
-    
 }
 
-#contenutoprincipale {
+#blocco-descrizione {
+    text-align: center;
+    width: 60%;
+}
+
+#descrizione-museo {
     background-color: white;
-    margin-right: 1%;
-    margin-top: 1%;
-    margin-left: 1%;
-    -moz-border-radius-topleft: 5%;
-    -moz-border-radius-topright: 5%;
-    color:black;
+    font-family: "Informal Roman";
+    font-size: 20px;
 }
 
+#blocco-pianta-museo {
+    text-align: center;
+    width: 40%;
+}
+
+#pianta-louvre {
+    width: 100%;
+}
 
 #bloccoinformazioni {
     background-color: green;
@@ -117,16 +129,75 @@ html {
 }
 
 footer {
-    background-color:#2F4F4F;
-    height: 100px;
+    background-color: rgba(0,0,0,0.2);
+    height: 50px;
+    width: 100%;
+    text-align: center;
     font-weight: 300;
     color: white;
     padding: 10px;
     font-family: sans-serif;
-    
+    position: fixed;
+    bottom: 0;
 }
 footer a{
 	text-decoration: none;
+}
+
+#fondo-testo {
+    list-style: none;
+    display: inline-flex;
+}
+
+#blocco-opera {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    display: inline-flex;
+    width: 1400px;
+    margin: 100px;
+    text-align: center;
+}
+
+#blocco-foto-opera {
+    width: 30%;
+    margin: 10px;
+}
+
+#blocco-foto-opera img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#blocco-testo-opera {
+    width: 70%;
+    text-align: center;
+}
+
+blocco-testo-opera h1 {
+    font-size: 60px;
+}
+
+blocco-testo-opera p {
+    font-size: 40px;
+}
+
+#blocco-artista {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    max-width: 500px;
+    max-height: 700px;
+    margin: 100px;
+    text-align: center;
+}
+
+#blocco-artista img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#contenutoprincipale-artisti {
+    display: inline-flex;
+    margin-bottom: 100px;
 }
 
 .login-box{
@@ -175,6 +246,20 @@ footer a{
   float: left;
   margin: 0 10px;
 }
+
+.textbox textarea {
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 18px;
+    width: 80%;
+    float: left;
+    margin: 0 10px;
+    rows: 6;
+    cols: 12;
+}
+
 .btn{
   width: 100%;
   background: none;

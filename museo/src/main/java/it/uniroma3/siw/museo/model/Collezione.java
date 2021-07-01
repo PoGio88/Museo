@@ -7,7 +7,6 @@ import java.util.List;
 
 
 @Data
-@NoArgsConstructor
 @Entity
 public class Collezione {
 
@@ -17,14 +16,10 @@ public class Collezione {
 
     private String nome;
 
+    @Column (length = 2000)
     private String descrizione;
 
     @OneToMany(mappedBy = "collezione")
     private List<Opera> opere;
-    
-    public Collezione(String nome) {
-        this.nome=nome;
-    }
-
 
 }

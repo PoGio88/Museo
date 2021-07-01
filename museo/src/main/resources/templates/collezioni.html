@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "fragments/base.html :: headerfiles">
+</head>
+<body>
+<header th:replace= "fragments/base.html :: menu"></header>
+
+<div id="Sfondo">
+    <a id="Titolo" href="#bloccocentrale">Collezioni</a>
+</div>
+
+<div id="bloccocentrale">
+    <div id="contenutoprincipale">
+        <div th:each="opera : ${opere}" >
+            <div th:replace="fragments/base.html :: opera(operaDaVisualizzare = ${opera})">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer th:replace ="fragments/base.html :: fondo(home='/')">
+</footer>
+</body>
+</html>

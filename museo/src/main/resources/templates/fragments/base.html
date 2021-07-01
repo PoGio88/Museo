@@ -1,26 +1,51 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="headerfiles">
-	<meta charset="UTF-8" />
-	<link th:href="@{/css/style.css}" rel="stylesheet">
-	<title th:text="Museo"></title>
+    <meta charset="UTF-8"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <title th:text="Museo"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<header th:fragment="menu">
-		<nav>
-                <ul class = "menu">
-                	<li><a class="elementiMenu" th:href="@{/visualizzaOpere}">Opere</a> </li>
-                	<li> <a class="elementiMenu" href="#">Collezioni</a></li>
-                	<li> <a class="elementiMenu" th:href="@{/visualizzaArtisti}">Autori</a></li>
-               	 </ul>
-         </nav>
-         <button>Contact</button>
-	</header>
-	
+<header th:fragment="menu">
+    <nav>
+        <ul class="menu">
+            <li><a class="elementiMenu" th:href="@{/visualizzaOpere}">Opere</a></li>
+            <li><a class="elementiMenu" href="#">Collezioni</a></li>
+            <li><a class="elementiMenu" th:href="@{/visualizzaArtisti}">Autori</a></li>
+        </ul>
+    </nav>
+    <button>Contact</button>
+</header>
+
 <footer th:fragment="fondo(home)">
-		<a th:href="@{${home}}">Home</a>
-		<h3>realizzato da Daniele Pica e Giorgio Poggini </h3>
-            
-	</footer>
+    <ul id="fondo-testo">
+        <li><a th:href="@{${home}}">Home</a></li>
+        <li><h3>realizzato da Daniele Pica e Giorgio Poggini </h3></li>
+        <li><a th:href="@{/login}">Effettua login</a></li>
+        <li><a th:href="@{/register}"> Registrati </a></li>
+    </ul>
+</footer>
+
+<div th:fragment="opera(operaDaVisualizzare)">
+    <div id="blocco-opera">
+        <div id="blocco-foto-opera">
+            <img th:src="@{${opera.photosImagePath}}"/>
+        </div>
+        <div id="blocco-testo-opera">
+            <h1 th:text="${opera.titolo}">Nome Opera</h1>
+            <p th:text="${opera.descrizione}"></p>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="artista(artistaDaVisualizzare)">
+    <div id="blocco-artista">
+        <img th:src="@{${artista.photosImagePath}}"/>
+        <a th:href="@{'/artista/' + ${artista.id}}" th:text="${artista.nome} +' '+${artista.cognome}"></a>
+        <p th:text="'Nato a ' + ${artista.luogoNascita} + ' nel ' + ${artista.dataNascita}"></p>
+        <p th:text="'Morto a ' + ${artista.luogoMorte} + ' nel ' + ${artista.dataMorte}"></p>
+    </div>
+</div>
 </body>
 </html>

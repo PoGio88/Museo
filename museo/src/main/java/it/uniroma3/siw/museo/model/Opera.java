@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@NoArgsConstructor
 @Entity
-@NamedQuery(name = "Opera.deleteOperaByCollezione", query = "DELETE FROM Opera p WHERE p.collezione = ?1")
-@NamedQuery(name = "Opera.deleteOpereByArtista", query = "DELETE FROM Opera p WHERE p.artista = ?1")
+@NamedQuery(name = "Opera.deleteOpereByCollezione", query = "DELETE FROM Opera p WHERE p.collezione = ?1")
+
 
 public class Opera {
 
@@ -24,6 +23,7 @@ public class Opera {
 
 	private int anno;  //dobbiamo capire che tipo mettere
 
+	@Column(length = 2000)
 	private String descrizione;
 
 	@ManyToOne
@@ -31,10 +31,6 @@ public class Opera {
 
 	@Column(nullable = true, length = 64)
 	private String foto;
-
-	private String nomeCollezione;
-	
-	private String nomeArtista;
 
 	@ManyToOne
 	private Collezione collezione;

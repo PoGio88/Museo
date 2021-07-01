@@ -13,7 +13,7 @@
           <div class="textbox">
           <span>Opera  </span>
             <select name="Opere" th:field="*{titolo}">
-                        <option th:each="op : ${opere}" th:text="${op.titolo}" th:value="${op.titolo}"   ></option>
+                        <option th:each="op : ${opere}" th:text="${op.titolo}" th:value="${op.id}"   ></option>
                   </select>
               </div>
 

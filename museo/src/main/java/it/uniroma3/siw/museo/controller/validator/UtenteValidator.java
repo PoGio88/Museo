@@ -1,10 +1,10 @@
-package it.uniroma3.siw.museo.validator;
+package it.uniroma3.siw.museo.controller.validator;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import it.uniroma3.siw.museo.model.Utente;
+import it.uniroma3.siw.museo.model.Amministratore;
 
 @Component
 public class UtenteValidator implements Validator {
@@ -14,7 +14,7 @@ public class UtenteValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        Utente user = (Utente) o;
+        Amministratore user = (Amministratore) o;
         String nome = user.getNome().trim();
         String cognome = user.getCognome().trim();
 
@@ -31,7 +31,7 @@ public class UtenteValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return Utente.class.equals(clazz);
+        return Amministratore.class.equals(clazz);
     }
 
 }
