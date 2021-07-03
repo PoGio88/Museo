@@ -1,6 +1,7 @@
 package it.uniroma3.siw.museo.controller;
 
 import it.uniroma3.siw.museo.model.Artista;
+import it.uniroma3.siw.museo.model.Collezione;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -50,6 +51,23 @@ public class UtenteController {
         model.addAttribute("artista", artista);
         model.addAttribute("opere", service.operePerArtista(artista));
         return "artista.html";
+    }
+
+    @RequestMapping(value = "/collezioni", method = RequestMethod.GET)
+    public String visualizzaCollezione(Model model) {
+        model.addAttribute("collezioni", service.tutteLeCollezioni());
+        System.out.println(SecurityContextHolder.getContext().getAuthentication());
+        if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
+            return "collezioni.html";
+        else return "admin/collezioni.html";
+    }
+
+    @RequestMapping(value = "/collezione/{id}", method = RequestMethod.GET)
+    public String visualizzaCollezione(@PathVariable("id") Long id, Model model) {
+        Collezione collezione = service.collezionePerId(id);
+        model.addAttribute("collezione", collezione);
+        model.addAttribute("opere", service.operePerCollezione(collezione));
+        return "collezione.html";
     }
 
     @RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)

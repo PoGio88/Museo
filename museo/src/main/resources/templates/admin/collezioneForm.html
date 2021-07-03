@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace = "fragments/base.html :: headerfiles">
+<head th:replace="fragments/base.html :: headerfiles">
 </head>
 <body>
-        <div class = "blocco1">
- <header th:replace= "fragments/base.html :: menu"></header>
-        <div class="login-box">
-		<h1>Aggiungi Collezione</h1>
-         <form th:action = "@{/aggiungiCollezione}" method="post" th:object = "${collezione}">
-         <div th:if="${#fields.hasGlobalErrors()}">
-  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-		</div>		
-              <div class="textbox">
-                  <span>Nome</span>
-                  <span><input type="text" th:field="*{nome}" /></span>
-                  <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-              </div>
-              <div class="textbox">
-                  <span>Descrizione</span>
-                  <span><input type="text" th:field="*{descrizione}" /></span>
-                  <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
-              </div>
-              <div class="textbox">
-                  <span><button type="submit">Invio</button></span>
-              </div>
-      </form>
-      </div>
-        </div>
-   		
-        <footer th:replace ="fragments/base.html :: fondo(home='/default')">
-           </footer>
+<div class="blocco1">
+    <header th:replace="fragments/base.html :: menu"></header>
+    <div class="login-box">
+        <h1>Aggiungi Collezione</h1>
+        <form th:action="@{/aggiungiCollezione}" method="post" th:object="${collezione}">
+            <div th:if="${#fields.hasGlobalErrors()}">
+                <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+            </div>
+            <div class="textbox">
+                <span>Nome</span>
+                <span><input type="text" th:field="*{nome}"/></span>
+                <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+            </div>
+            <div class="textbox">
+                <span>Descrizione</span>
+                <span><textarea type="text" th:field="*{descrizione}"/></span>
+                <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+            </div>
+            <div class="textbox">
+                <span><button type="submit">Invio</button></span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer th:replace="fragments/base.html :: fondo(home='/default')">
+</footer>
 </body>
 </html>

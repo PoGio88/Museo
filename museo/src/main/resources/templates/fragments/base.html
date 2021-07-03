@@ -11,7 +11,7 @@
     <nav>
         <ul class="menu">
             <li><a class="elementiMenu" th:href="@{/visualizzaOpere}">Opere</a></li>
-            <li><a class="elementiMenu" href="#">Collezioni</a></li>
+            <li><a class="elementiMenu" th:href="@{/collezioni}">Collezioni</a></li>
             <li><a class="elementiMenu" th:href="@{/visualizzaArtisti}">Autori</a></li>
         </ul>
     </nav>
@@ -27,7 +27,7 @@
     </ul>
 </footer>
 
-<div th:fragment="opera(operaDaVisualizzare)">
+<div th:fragment="operaDaVisualizzare(opera)">
     <div id="blocco-opera">
         <div id="blocco-foto-opera">
             <img th:src="@{${opera.photosImagePath}}"/>
@@ -39,12 +39,24 @@
     </div>
 </div>
 
-<div th:fragment="artista(artistaDaVisualizzare)">
+<div th:fragment="artistaDaVisualizzare(artista)">
     <div id="blocco-artista">
         <img th:src="@{${artista.photosImagePath}}"/>
         <a th:href="@{'/artista/' + ${artista.id}}" th:text="${artista.nome} +' '+${artista.cognome}"></a>
         <p th:text="'Nato a ' + ${artista.luogoNascita} + ' nel ' + ${artista.dataNascita}"></p>
         <p th:text="'Morto a ' + ${artista.luogoMorte} + ' nel ' + ${artista.dataMorte}"></p>
+    </div>
+</div>
+
+<div th:fragment="collezioneDaVisualizzare(collezione)">
+    <div id="blocco-collezione">
+        <div id="blocco-testo-collezione">
+            <a th:href="@{'/collezione/' + ${collezione.id}}" th:text="${collezione.nome}">Nome Collezione</a>
+            <p th:text="${collezione.descrizione}"></p>
+        </div>
+        <div id="blocco-slider-collezioni">
+
+        </div>
     </div>
 </div>
 </body>

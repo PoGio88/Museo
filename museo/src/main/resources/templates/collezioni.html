@@ -11,8 +11,8 @@
 
 <div id="bloccocentrale">
     <div id="contenutoprincipale">
-        <div th:each="opera : ${opere}" >
-            <div th:replace="fragments/base.html :: opera(operaDaVisualizzare = ${opera})">
+        <div th:each="collezione : ${collezioni}" >
+            <div th:replace="fragments/base.html :: collezioneDaVisualizzare(collezione = ${collezione})">
 
             </div>
         </div>

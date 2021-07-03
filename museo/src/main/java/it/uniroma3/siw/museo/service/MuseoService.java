@@ -56,6 +56,9 @@ public class MuseoService {
 	}
 
 	@Transactional
+	public List<Opera> operePerCollezione(Collezione collezione) { return operaRepository.findByCollezione(collezione); }
+
+	@Transactional
 	public void eliminaOpera(Opera opera) {
 		operaRepository.delete(opera);
 	}

@@ -13,11 +13,11 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface OperaRepository extends CrudRepository<Opera, Long> {
 
-	public Optional<Opera> findByCollezione(Collezione collezione);
-
 	public Optional<Opera> findById(Long id);
 
 	public List<Opera> findByArtista(Artista artista);
+
+	public List<Opera> findByCollezione(Collezione collezione);
 
 	@Modifying
 	/* Per ottenere l'esecuzione di query di modifica che in realtà richiedono 
