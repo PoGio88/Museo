@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace = "fragments/base.html :: headerfiles">
+<head th:replace="fragments/base.html :: headerfiles">
 </head>
 <body>
 
-     <div class = "blocco1">
- <header th:replace= "fragments/base.html :: menu"></header>
-        <div class="login-box">
-		<h1>Elimina Opera</h1>
-      <form th:action = "@{/eliminaOpera}" method="post" th:object = "${opera}">
-      <span>Scegli l'opera da eliminare</span>
-          <div class="textbox">
-          <span>Opera  </span>
-            <select name="Opere" th:field="*{titolo}">
-                        <option th:each="op : ${opere}" th:text="${op.titolo}" th:value="${op.id}"   ></option>
-                  </select>
-              </div>
+<div class="blocco1">
+    <header th:replace="fragments/base.html :: menu"></header>
+    <div class="login-box">
+        <h1>Elimina Opera</h1>
+        <form th:action="@{/eliminaOpera}" method="post" th:object="${opera}">
+            <span>Scegli l'opera da eliminare</span>
+            <div class="textbox">
+                <span>Opera  </span>
+                <select name="Opere" th:field="*{titolo}">
+                    <option th:each="op : ${opere}" th:text="${op.titolo}" th:value="${op.id}"></option>
+                </select>
+            </div>
 
-              <div>
-                  <span><button type="submit">Invio</button></span>
-              </div>
-      </form>
-      </div>
-      </div>
-      <footer th:replace ="fragments/base.html :: fondo('/default')"></footer>
+            <div>
+                <span><button type="submit">Invio</button></span>
+            </div>
+        </form>
+    </div>
+</div>
+<footer th:replace="fragments/base.html :: amministratore(admin = ${admin})">
 
 </body>
 </html>

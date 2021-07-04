@@ -1,5 +1,6 @@
 package it.uniroma3.siw.museo.controller;
 
+import it.uniroma3.siw.museo.service.MuseoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,9 @@ public class AuthenticationController {
 	@Autowired
 	private CredentialsValidator credentialsValidator;
 
+	@Autowired
+	private MuseoService service;
+
 
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET) 
@@ -42,7 +46,8 @@ public class AuthenticationController {
 	
 	@RequestMapping(value = "/default", method = RequestMethod.GET)
     public String defaultDopoLogin(Model model) {
-        return "admin/home";
+        service.identificaAmministratoreNelModel(model);
+		return "admin/home";
     }
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET) 

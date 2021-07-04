@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace = "fragments/base.html :: headerfiles">
+<head th:replace="fragments/base.html :: headerfiles">
 </head>
 <body>
 
-    <div class = "blocco1">
- <header th:replace= "fragments/base.html :: menu"></header>
-        <div class="login-box">
-		<h1>Aggiungi Opera</h1>
-      <form th:action = "@{/aggiungiOpera}" method="post" th:object = "${opera}" enctype="multipart/form-data">
-              <div class = "textbox">
-                  <span>Nome</span>
-                  <span><input type="text" th:field="*{titolo}" /></span>
-              </div>
-              <div class = "textbox">
-                  <span>Anno</span>
-                  <span><input type="text" th:field="*{anno}" /></span>
-              </div>
-              <div class = "textbox">
-                  <span>Descrizione</span>
-                  <span><textarea type="text" th:field="*{descrizione}" /></span>
-              </div>
-              <div class = "textbox">
-                  <span>Artista</span>
-                  <select name="artista" th:field="*{artista}">
-                        <option th:each="art : ${artisti}" th:text="|${art.nome} ${art.cognome}|" th:value="${art.id}"></option>
-                  </select>
-              </div>
-              <div class = "textbox">
-                  <span>Collezione</span>
-                  <select name="Collezione" th:field="*{collezione}">
-                        <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.id}"></option>
-                  </select>
-              </div>
-              <div class = "textbox">
-                  <span>Foto opera</span>
-              <input type ="file" name = "immagine" required/>
-              </div>
-              <div>
-                  <span><button type="submit">Invio</button></span>
-              </div>
-      </form>
-        </div>
+<div class="blocco1">
+    <header th:replace="fragments/base.html :: menu"></header>
+    <div class="login-box">
+        <h1>Aggiungi Opera</h1>
+        <form th:action="@{/aggiungiOpera}" method="post" th:object="${opera}" enctype="multipart/form-data">
+            <div class="textbox">
+                <span>Nome</span>
+                <span><input type="text" th:field="*{titolo}"/></span>
+            </div>
+            <div class="textbox">
+                <span>Anno</span>
+                <span><input type="text" th:field="*{anno}"/></span>
+            </div>
+            <div class="textbox">
+                <span>Descrizione</span>
+                <span><textarea type="text" th:field="*{descrizione}"/></span>
+            </div>
+            <div class="textbox">
+                <span>Artista</span>
+                <select name="artista" th:field="*{artista}">
+                    <option th:each="art : ${artisti}" th:text="|${art.nome} ${art.cognome}|"
+                            th:value="${art.id}"></option>
+                </select>
+            </div>
+            <div class="textbox">
+                <span>Collezione</span>
+                <select name="Collezione" th:field="*{collezione}">
+                    <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.id}"></option>
+                </select>
+            </div>
+            <div class="textbox">
+                <span>Foto opera</span>
+                <input type="file" name="immagine" required/>
+            </div>
+            <div>
+                <span><button type="submit">Invio</button></span>
+            </div>
+        </form>
     </div>
-        
-      <footer th:replace ="fragments/base.html :: fondo('/default')"></footer>
+</div>
+
+<footer th:replace="fragments/base.html :: amministratore(admin = ${admin})">
 
 </body>
 </html>

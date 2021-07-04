@@ -21,7 +21,7 @@
         <a th:href="@{/logout}">Logout</a>
     </div>
 </div>
-<footer th:replace="fragments/base.html :: fondo(home='/default')">
+<footer th:replace="fragments/base.html :: amministratore(admin = ${admin})">
 </footer>
 </body>
 </html>

@@ -22,4 +22,6 @@ public class Collezione {
     @OneToMany(mappedBy = "collezione")
     private List<Opera> opere;
 
+    @ManyToOne
+    private Curatore curatore;
 }

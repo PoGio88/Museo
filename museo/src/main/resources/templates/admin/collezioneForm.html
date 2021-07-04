@@ -22,13 +22,19 @@
                 <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
             </div>
             <div class="textbox">
+                <span>Curatore</span>
+                <select name="Curatore" th:field="*{curatore}">
+                    <option th:each="cur : ${curatori}" th:text="${cur.nome}" th:value="${cur.id}"></option>
+                </select>
+            </div>
+            <div class="textbox">
                 <span><button type="submit">Invio</button></span>
             </div>
         </form>
     </div>
 </div>
 
-<footer th:replace="fragments/base.html :: fondo(home='/default')">
+<footer th:replace="fragments/base.html :: amministratore(admin = ${admin})">
 </footer>
 </body>
 </html>

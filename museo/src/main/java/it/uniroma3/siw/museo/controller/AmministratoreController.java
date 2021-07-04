@@ -10,6 +10,7 @@ import it.uniroma3.siw.museo.controller.validator.CollezioneValidator;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -38,6 +39,7 @@ public class AmministratoreController {
         model.addAttribute("opera", new Opera());
         model.addAttribute("collezioni", this.service.tutteLeCollezioni());
         model.addAttribute("artisti", this.service.tuttiGliArtisti());
+        service.identificaAmministratoreNelModel(model);
         return "admin/operaForm.html";
     }
 
@@ -48,18 +50,21 @@ public class AmministratoreController {
         Opera operaSalvata = service.inserisciOpera(opera);
         String uploadDir = "src/main/resources/static/images/foto-opere/" + operaSalvata.getId();
         service.saveImage(uploadDir, fileName, immagine);
+        service.identificaAmministratoreNelModel(model);
         return "admin/home.html";
     }
 
     @RequestMapping(value = "/aggiungiArtista", method = RequestMethod.GET)
     public String aggiungiArtista(Model model) {
         model.addAttribute("artista", new Artista());
+        service.identificaAmministratoreNelModel(model);
         return "admin/artistaForm.html";
     }
 
     @RequestMapping(value = "/aggiungiArtista", method = RequestMethod.POST)
     public String aggiungiArtista(@ModelAttribute("artista") Artista artista, @RequestParam("immagine") MultipartFile immagine, Model model, BindingResult bindingResult) throws Exception {
         this.artistaValidator.validate(artista, bindingResult);
+        service.identificaAmministratoreNelModel(model);
         if (!bindingResult.hasErrors()) {
             String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
             artista.setFoto(fileName);
@@ -75,12 +80,15 @@ public class AmministratoreController {
     @RequestMapping(value = "/aggiungiCollezione", method = RequestMethod.GET)
     public String aggiungiCollezione(Model model) {
         model.addAttribute("collezione", new Collezione());
+        model.addAttribute("curatori",service.tuttiICuratori());
+        service.identificaAmministratoreNelModel(model);
         return "admin/collezioneForm.html";
     }
 
     @RequestMapping(value = "/aggiungiCollezione", method = RequestMethod.POST)
     public String aggiungiCollezione(@ModelAttribute("collezione") Collezione collezione, Model model, BindingResult bindingResult) {
         this.collezioneValidator.validate(collezione, bindingResult);
+        service.identificaAmministratoreNelModel(model);
         if (!bindingResult.hasErrors()) {
             this.service.inserisciCollezione(collezione);
             return "admin/home.html";
@@ -92,6 +100,7 @@ public class AmministratoreController {
     public String eliminaCollezione(Model model) {
         model.addAttribute("collezioni", this.service.tutteLeCollezioni());
         model.addAttribute("collezione", new Collezione());
+        service.identificaAmministratoreNelModel(model);
         return "admin/eliminaCollezione.html";
     }
 
@@ -99,6 +108,7 @@ public class AmministratoreController {
     public String eliminaCollezione(@ModelAttribute("collezione") Collezione collezione, Model model) {
         Collezione collezioneDaEliminare = service.collezionePerId(collezione.getId());
         service.eliminaCollezione(collezioneDaEliminare);
+        service.identificaAmministratoreNelModel(model);
         return "admin/home.html";
     }
 
@@ -106,12 +116,14 @@ public class AmministratoreController {
     public String eliminaOpera(Model model) {
         model.addAttribute("opere", this.service.tutteLeOpere());
         model.addAttribute("opera", new Opera());
+        service.identificaAmministratoreNelModel(model);
         return "admin/eliminaOpera.html";
     }
 
     @RequestMapping(value = "/eliminaOpera", method = RequestMethod.POST)
     public String eliminaOpera(@ModelAttribute("opera") Opera opera, Model model) {
         service.eliminaOpera(service.operaPerId(opera.getId()));
+        service.identificaAmministratoreNelModel(model);
         return "admin/home.html";
     }
 

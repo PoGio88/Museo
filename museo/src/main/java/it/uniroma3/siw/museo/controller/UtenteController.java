@@ -31,18 +31,18 @@ public class UtenteController {
     public String visualizzaOpere(Model model) {
         model.addAttribute("opere", service.tutteLeOpere());
         System.out.println(SecurityContextHolder.getContext().getAuthentication());
-        if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
-            return "opere.html";
-        else return "admin/opere.html";
+        if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
+            service.identificaAmministratoreNelModel(model);
+        return "opere.html";
     }
 
     @RequestMapping(value = "/visualizzaArtisti", method = RequestMethod.GET)
     public String visualizzaArtisti(Model model) {
         model.addAttribute("artisti", service.tuttiGliArtisti());
         System.out.println(SecurityContextHolder.getContext().getAuthentication());
-        if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
-            return "artisti.html";
-        else return "admin/artisti.html";
+        if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
+            service.identificaAmministratoreNelModel(model);
+        return "artisti.html";
     }
 
     @RequestMapping(value = "/artista/{id}", method = RequestMethod.GET)
@@ -50,6 +50,9 @@ public class UtenteController {
         Artista artista = service.artistaPerId(id);
         model.addAttribute("artista", artista);
         model.addAttribute("opere", service.operePerArtista(artista));
+        System.out.println(SecurityContextHolder.getContext().getAuthentication());
+        if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
+            service.identificaAmministratoreNelModel(model);
         return "artista.html";
     }
 
@@ -57,9 +60,9 @@ public class UtenteController {
     public String visualizzaCollezione(Model model) {
         model.addAttribute("collezioni", service.tutteLeCollezioni());
         System.out.println(SecurityContextHolder.getContext().getAuthentication());
-        if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
-            return "collezioni.html";
-        else return "admin/collezioni.html";
+        if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
+            service.identificaAmministratoreNelModel(model);
+        return "collezioni.html";
     }
 
     @RequestMapping(value = "/collezione/{id}", method = RequestMethod.GET)
@@ -67,6 +70,10 @@ public class UtenteController {
         Collezione collezione = service.collezionePerId(id);
         model.addAttribute("collezione", collezione);
         model.addAttribute("opere", service.operePerCollezione(collezione));
+        model.addAttribute("curatore",service.curatorePerCollezione(collezione));
+        System.out.println(SecurityContextHolder.getContext().getAuthentication());
+        if (!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"))
+            service.identificaAmministratoreNelModel(model);
         return "collezione.html";
     }
 

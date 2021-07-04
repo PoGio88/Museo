@@ -18,11 +18,13 @@
     <button>Contact</button>
 </header>
 
-<footer th:fragment="fondo(home)">
+<footer th:fragment="amministratore(admin)">
     <ul id="fondo-testo">
-        <li><a th:href="@{${home}}">Home</a></li>
+        <li th:if="${admin}"><a href="/default">Home</a> </li>
+        <li th:unless="${admin}"><a href="/">Home</a></li>
         <li> realizzato da Daniele Pica e Giorgio Poggini</li>
-        <li><a th:href="@{/login}">Effettua login</a></li>
+        <li th:if="${admin}"><a th:href="@{/logout}">Logout</a></li>
+        <li th:unless="${admin}"><a th:href="@{/login}">Effettua login</a></li>
         <li><a th:href="@{/register}"> Registrati </a></li>
     </ul>
 </footer>

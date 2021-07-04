@@ -2,9 +2,11 @@ package it.uniroma3.siw.museo.service;
 
 import it.uniroma3.siw.museo.model.Artista;
 import it.uniroma3.siw.museo.model.Collezione;
+import it.uniroma3.siw.museo.model.Curatore;
 import it.uniroma3.siw.museo.model.Opera;
 import it.uniroma3.siw.museo.repository.ArtistaRepository;
 import it.uniroma3.siw.museo.repository.CollezioneRepository;
+import it.uniroma3.siw.museo.repository.CuratoreRepository;
 import it.uniroma3.siw.museo.repository.OperaRepository;
 
 import java.io.IOException;
@@ -20,6 +22,7 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
@@ -33,6 +36,9 @@ public class MuseoService {
 
 	@Autowired
 	private CollezioneRepository collezioneRepository;
+
+	@Autowired
+	private CuratoreRepository curatoreRepository;
 
 	@Transactional
 	public Opera inserisciOpera(Opera opera) {
@@ -113,6 +119,17 @@ public class MuseoService {
 		return art.isPresent();
 	}
 
+	@Transactional
+	public List<Curatore> tuttiICuratori() {
+		return (List<Curatore>) curatoreRepository.findAll();
+	}
+
+	@Transactional
+	public Curatore curatorePerCollezione(Collezione collezione) {
+		Optional<Curatore> optional = curatoreRepository.findByCollezione(collezione);
+		return optional.orElse(null);
+	}
+
 	public void saveImage(String uploadDir, String fileName, MultipartFile immagine) throws Exception {
 		
 		Path uploadPath = Paths.get(uploadDir);
@@ -128,5 +145,9 @@ public class MuseoService {
             throw new IOException("Could not save image file: " + fileName, ioe);
         }      
     }
+
+    public void identificaAmministratoreNelModel(Model model) {
+		model.addAttribute("admin",true);
+	}
 
 }

@@ -3,11 +3,10 @@ package it.uniroma3.siw.museo.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -30,4 +29,7 @@ public class Curatore {
     private String matricola;
 
     private String telefono;
+
+    @OneToMany (mappedBy = "curatore")
+    private List<Collezione> collezione;
 }

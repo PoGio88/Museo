@@ -112,23 +112,43 @@ html {
     text-align: center;
     font-size: 200px;
     width: 60%;
-    border-right: 3px solid black;
-    padding-right: 10px;
+    padding: 5%;
 }
 
 #descrizione-museo {
     background-color: white;
     font-family: "Informal Roman";
-    font-size: 20px;
+    font-size: 26px;
 }
 
 #blocco-pianta-museo {
     text-align: center;
     width: 40%;
+    padding-top: 10%;
 }
 
 #pianta-louvre {
     width: 100%;
+}
+
+#blocco-contatti {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 5%;
+    background-color: #ffffe6;
+}
+
+#testo-contatti {
+    width: 50%;
+    text-align: center;
+    padding: 10%;
+}
+
+#blocco-mappa {
+    width: 50%
+    padding:5%;
+    text-align: center;
 }
 
 #bloccoinformazioni {
@@ -176,7 +196,7 @@ color: #39f;
 #blocco-opera {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     display: inline-flex;
-    width: 1400px;
+    width: 1200px;
     margin: 100px;
     text-align: center;
 }
