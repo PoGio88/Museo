@@ -15,7 +15,7 @@
             <li><a class="elementiMenu" th:href="@{/visualizzaArtisti}">Autori</a></li>
         </ul>
     </nav>
-    <button>Contact</button>
+    <a href="index#blocco-contatti"> <button>Contatti</button></a>
 </header>
 
 <footer th:fragment="amministratore(admin)">
@@ -41,7 +41,7 @@
     </div>
 </div>
 
-<div th:fragment="artistaDaVisualizzare(artista)">
+<div th:fragment="artistaDaVisualizzare(artista)"> 
     <div id="blocco-artista">
         <img th:src="@{${artista.photosImagePath}}"/>
         <a th:href="@{'/artista/' + ${artista.id}}" th:text="${artista.nome} +' '+${artista.cognome}"></a>
