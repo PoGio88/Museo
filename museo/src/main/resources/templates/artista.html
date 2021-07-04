@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles">
+<head th:replace="fragments/base.html :: headerfiles(title = |${artista.nome} ${artista.cognome}|)">
 </head>
 <body>
 <header th:replace="fragments/base.html :: menu"></header>
