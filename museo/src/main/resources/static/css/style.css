@@ -71,7 +71,10 @@ button:hover {
 .blocco1{
   font-family: sans-serif;
   background: url(/images/louvre-login.jpg) no-repeat;
+  background-position: center center;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
   height: 900px;
 }
 
@@ -84,8 +87,10 @@ html {
     height: 900px;
     width:100%;
     background-image: url(/images/louvre.jpeg);
+    background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: scroll;
     text-align: center;
 }
 
