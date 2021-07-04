@@ -5,8 +5,8 @@
 <body>
 <header th:replace="fragments/base.html :: menu"></header>
 
-<div id="Sfondo">
-    <a th:text="${collezione.nome}" id="Titolo" href="#bloccocentrale">Artista</a>
+<div class="Sfondo">
+    <a th:text="${collezione.nome}" class="Titolo-menu" href="#bloccocentrale">Artista</a>
     <h2 th:text  = "${collezione.descrizione}"> Descrizione Opera </h2>
 </div>
 

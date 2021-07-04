@@ -83,7 +83,7 @@ html {
 }
 
 
-#Sfondo {
+.Sfondo {
     height: 900px;
     width:100%;
     background-image: url(/images/louvre.jpeg);
@@ -106,13 +106,13 @@ html {
     
 }
 
-#Titolo-menu {
-	line-height: 500px;
+.Titolo-menu {
+	line-height: 800px;
     color: white;
     font-size: 100px;
     text-decoration: none;
-    top: 30%;
-    left: 40%;
+    
+    
 }
 
 #bloccocentrale {
@@ -329,6 +329,7 @@ div {
   margin-bottom: 50px;
   padding: 13px 0;
 }
+
 .textbox{
   width: 100%;
   overflow: hidden;
