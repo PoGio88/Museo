@@ -45,8 +45,9 @@
     <div id="blocco-artista">
         <img th:src="@{${artista.photosImagePath}}"/>
         <a th:href="@{'/artista/' + ${artista.id}}" th:text="${artista.nome} +' '+${artista.cognome}"></a>
-        <p th:text="'Nato a ' + ${artista.luogoNascita} + ' nel ' + ${artista.dataNascita}"></p>
-        <p th:text="'Morto a ' + ${artista.luogoMorte} + ' nel ' + ${artista.dataMorte}"></p>
+        <div th:if="${!artista.dataNascita.isEmpty()}"><p th:text="'Nato a ' + ${artista.luogoNascita} + ' nel ' + ${artista.dataNascita}"></p> </div>
+        <div th:if="${!artista.dataMorte.isEmpty()}"> <p th:text="'Morto a ' + ${artista.luogoMorte} + ' nel ' + ${artista.dataMorte}"></p> </div>
+        <p th:text="'Nazionalità '+${artista.nazionalita}"> </p>
     </div>
 </div>
 

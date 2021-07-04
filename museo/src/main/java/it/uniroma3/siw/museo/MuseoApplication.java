@@ -14,5 +14,6 @@ public class MuseoApplication {
 	}
 	
 	//capire che valore dare a dataMorte e dataNascita nella classe artista
+	//Password criptata = 123456 = $2a$10$DTQemAHGn7t7WW.a4XsOmO6tJIAzSv4Om1kSO5y5BjCXw7fB8Li3a
 
 }

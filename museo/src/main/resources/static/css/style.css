@@ -92,6 +92,7 @@ html {
     background-repeat: no-repeat;
     background-attachment: scroll;
     text-align: center;
+
 }
 
 #Titolo {
@@ -99,6 +100,19 @@ html {
     color: white;
     font-size: 100px;
     text-decoration: none;
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    
+}
+
+#Titolo-menu {
+	line-height: 500px;
+    color: white;
+    font-size: 100px;
+    text-decoration: none;
+    top: 30%;
+    left: 40%;
 }
 
 #bloccocentrale {

@@ -10,12 +10,12 @@
 </div>
 
 <div id="bloccocentrale">
-    <div id="contenutoprincipale-artisti">
-        <div th:each="artista : ${artisti}">
-            <div th:replace="fragments/base.html :: artistaDaVisualizzare(artista = ${artista})">
+    <div id="blocco-artisti">
+        <span th:each="artista : ${artisti}">
+            <span th:replace="fragments/base.html :: artistaDaVisualizzare(artista = ${artista})">
 
-            </div>
-        </div>
+            </span>
+        </span>
 
     </div>
 </div>
