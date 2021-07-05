@@ -2,10 +2,9 @@ package it.uniroma3.siw.museo.model;
 
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -22,11 +21,11 @@ public class Artista {
 
     private String luogoNascita;
 
-    private String dataNascita;    //controllare tipo
+    private String dataNascita;
 
     private String luogoMorte;
 
-    private String dataMorte;    //controllare tipo
+    private String dataMorte;
 
     private String nazionalita;
     

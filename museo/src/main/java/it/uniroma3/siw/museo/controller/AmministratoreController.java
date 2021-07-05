@@ -1,6 +1,7 @@
 package it.uniroma3.siw.museo.controller;
 
 
+import it.uniroma3.siw.museo.controller.validator.OperaValidator;
 import it.uniroma3.siw.museo.model.Artista;
 import it.uniroma3.siw.museo.model.Collezione;
 import it.uniroma3.siw.museo.model.Opera;
@@ -34,6 +35,9 @@ public class AmministratoreController {
     @Autowired
     private ArtistaValidator artistaValidator;
 
+    @Autowired
+    private OperaValidator operaValidator;
+
     @RequestMapping(value = "/aggiungiOpera", method = RequestMethod.GET)
     public String aggiungiOpera(Model model) {
         model.addAttribute("opera", new Opera());
@@ -44,14 +48,18 @@ public class AmministratoreController {
     }
 
     @RequestMapping(value = "/aggiungiOpera", method = RequestMethod.POST)
-    public String aggiungiOpera(@ModelAttribute("opera") Opera opera, @RequestParam("immagine") MultipartFile immagine, Model model) throws Exception {
-        String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
-        opera.setFoto(fileName);
-        Opera operaSalvata = service.inserisciOpera(opera);
-        String uploadDir = "src/main/resources/static/images/foto-opere/" + operaSalvata.getId();
-        service.saveImage(uploadDir, fileName, immagine);
+    public String aggiungiOpera(@ModelAttribute("opera") Opera opera, @RequestParam("immagine") MultipartFile immagine, Model model, BindingResult bindingResult) throws Exception {
+        this.operaValidator.validate(opera, bindingResult);
         service.identificaAmministratoreNelModel(model);
-        return "admin/home.html";
+        if (!bindingResult.hasErrors()) {
+            String fileName = StringUtils.cleanPath(immagine.getOriginalFilename());
+            opera.setFoto(fileName);
+            Opera operaSalvata = this.service.inserisciOpera(opera);
+            String uploadDir = "src/main/resources/static/images/foto-opere/" + operaSalvata.getId();
+            service.saveImage(uploadDir, fileName, immagine);
+            return "admin/home.html";
+        }
+        return "admin/operaForm";
     }
 
     @RequestMapping(value = "/aggiungiArtista", method = RequestMethod.GET)
@@ -93,7 +101,7 @@ public class AmministratoreController {
             this.service.inserisciCollezione(collezione);
             return "admin/home.html";
         }
-        return "admin/collezioneForm.html";
+        return "admin/collezioneForm";
     }
 
     @RequestMapping(value = "/eliminaCollezione", method = RequestMethod.GET)
