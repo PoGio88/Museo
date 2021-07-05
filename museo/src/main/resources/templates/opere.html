@@ -3,7 +3,7 @@
 <head th:replace="fragments/base.html :: headerfiles(title=#{header.opere})"> </head>
 </head>
 <body>
-        <header th:replace= "fragments/base.html :: menu"></header>
+<header th:replace="fragments/base.html :: menu(admin = ${admin})"></header>
 
         <div class="Sfondo">
                 <a class="Titolo-menu">Opere</a>

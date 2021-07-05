@@ -4,8 +4,8 @@
 </head>
 <body>
 <div class="blocco1">
-    <header th:replace="fragments/base.html :: menu"></header>
-    <a class="Titolo-menu" href="#bloccocentrale">Menu Amministratore</a>
+    <header th:replace="fragments/base.html :: menu(admin = ${admin})"></header>
+    <a class="Titolo-menu">Menu Amministratore</a>
 
     <div class="bloccoOperazioni">
         <a href="aggiungiOpera"> Inserisci Opera </a>
@@ -15,10 +15,6 @@
         <a href="aggiungiArtista"> Aggiungi artista </a>
 
 
-    </div>
-
-    <div class="logOut">
-        <a th:href="@{/logout}">Logout</a>
     </div>
 </div>
 <footer th:replace="fragments/base.html :: amministratore(admin = ${admin})">

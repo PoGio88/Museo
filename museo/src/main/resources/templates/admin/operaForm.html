@@ -5,7 +5,7 @@
 <body>
 
 <div class="blocco1">
-    <header th:replace="fragments/base.html :: menu"></header>
+    <header th:replace="fragments/base.html :: menu(admin = ${admin})"></header>
     <div class="login-box">
         <h1>Aggiungi Opera</h1>
         <form th:action="@{/aggiungiOpera}" method="post" th:object="${opera}" enctype="multipart/form-data">
@@ -23,14 +23,14 @@
             </div>
             <div class="textbox">
                 <span>Artista</span>
-                <select name="artista" th:field="*{artista}">
+                <select name="artista" th:field="*{artista}" required>
                     <option th:each="art : ${artisti}" th:text="|${art.nome} ${art.cognome}|"
                             th:value="${art.id}"></option>
                 </select>
             </div>
             <div class="textbox">
                 <span>Collezione</span>
-                <select name="Collezione" th:field="*{collezione}">
+                <select name="Collezione" th:field="*{collezione}" required>
                     <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.id}"></option>
                 </select>
             </div>

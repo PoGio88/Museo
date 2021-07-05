@@ -2,6 +2,8 @@ package it.uniroma3.siw.museo.controller;
 
 import it.uniroma3.siw.museo.service.MuseoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -47,6 +49,8 @@ public class AuthenticationController {
 	@RequestMapping(value = "/default", method = RequestMethod.GET)
     public String defaultDopoLogin(Model model) {
         service.identificaAmministratoreNelModel(model);
+		UserDetails userDetails =(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("nomeAdmin",userDetails.getUsername());
 		return "admin/home";
     }
 	

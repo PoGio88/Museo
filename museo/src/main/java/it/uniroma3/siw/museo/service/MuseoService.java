@@ -57,6 +57,12 @@ public class MuseoService {
 	}
 
 	@Transactional
+	public boolean operaGiaPresente(Opera opera) {
+		Optional<Opera> op = this.operaRepository.findByTitoloAndArtista(opera.getTitolo(),opera.getArtista());
+		return op.isPresent();
+	}
+
+	@Transactional
 	public List<Opera> operePerArtista(Artista artista) {
 		return operaRepository.findByArtista(artista);
 	}

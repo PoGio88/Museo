@@ -19,6 +19,8 @@ public interface OperaRepository extends CrudRepository<Opera, Long> {
 
 	public List<Opera> findByCollezione(Collezione collezione);
 
+	public Optional<Opera> findByTitoloAndArtista(String titolo, Artista artista);
+
 	@Modifying
 	/* Per ottenere l'esecuzione di query di modifica che in realtà richiedono 
 	 * solo l'associazione di parametri annotando il metodo di query con @Modifying.

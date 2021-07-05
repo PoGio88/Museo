@@ -1,5 +1,6 @@
 package it.uniroma3.siw.museo.controller.validator;
 
+import it.uniroma3.siw.museo.model.Opera;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +25,13 @@ public class OperaValidator implements Validator {
 public void validate(Object o, Errors errors) {
 	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "titolo", "required");
 	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descrizione", "required");
-	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "artista", "required");
 
 
 	if (!errors.hasErrors()) {
 		logger.debug("confermato: valori non nulli");
-		if (this.museoService.collezioneGiaPresente((Collezione)o)) {
+		if (this.museoService.operaGiaPresente((Opera)o)) {
 			logger.debug("e' un duplicato");
-			errors.reject("duplicatoCollezione");
+			errors.reject("duplicatoOpera");
 		}
 	}
 	

@@ -5,7 +5,7 @@
 <body>
 
 <div class="blocco1">
-    <header th:replace="fragments/base.html :: menu"></header>
+    <header th:replace="fragments/base.html :: menu(admin = ${admin})"></header>
     <div class="login-box">
         <h1>Aggiungi Artista</h1>
         <form th:action="@{/aggiungiArtista}" method="post" th:object="${artista}" enctype="multipart/form-data">

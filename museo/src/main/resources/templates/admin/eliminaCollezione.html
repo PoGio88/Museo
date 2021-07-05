@@ -5,7 +5,7 @@
 <body>
 
 <div class="blocco1">
-    <header th:replace="fragments/base.html :: menu"></header>
+    <header th:replace="fragments/base.html :: menu(admin = ${admin})"></header>
     <div class="login-box">
         <h1>Elimina Collezione</h1>
         <form th:action="@{/eliminaCollezione}" method="post" th:object="${collezione}">

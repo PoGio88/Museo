@@ -23,7 +23,7 @@
             </div>
             <div class="textbox">
                 <span>Curatore</span>
-                <select name="Curatore" th:field="*{curatore}">
+                <select name="Curatore" th:field="*{curatore}" required>
                     <option th:each="cur : ${curatori}" th:text="${cur.nome}" th:value="${cur.id}"></option>
                 </select>
             </div>

@@ -16,8 +16,7 @@ body {
 .menu,
 .elementiMenu,
 button,
-.bloccoOperazioni a,
-.logOut a{
+.bloccoOperazioni a{
 	font-weight: 300;
 	font-size: 18px;
 	color: white;
@@ -52,6 +51,16 @@ header {
 
 .menu a:hover{
 	color: #39f;
+}
+
+#scritta-bentornato {
+    font-weight: 300;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Bona Nova', serif;;
+    padding :0 10px;
+    list-style: none;
 }
 
 button {
@@ -427,12 +436,12 @@ div {
 	justify-content: center;
 	
 }
-.bloccoOperazioni a, .logOut a{
+.bloccoOperazioni a{
 	padding :0 10px;
 	transition: 0.6s;
 	font-size: 30px;
 }
-.bloccoOperazioni a:hover, .logOut a:hover{
+.bloccoOperazioni a:hover{
 	color:#39f;
 }
 

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<header th:fragment="menu">
+<header th:fragment="menu(admin)">
     <nav>
         <ul class="menu">
             <li><a class="elementiMenu" th:href="@{/visualizzaOpere}">Opere</a></li>
@@ -18,7 +18,8 @@
             <li><a class="elementiMenu" th:href="@{/visualizzaArtisti}">Artisti</a></li>
         </ul>
     </nav>
-    <a href="/index#blocco-contatti"> <button>Contatti</button></a>
+    <a th:unless="${admin}" href="/index#blocco-contatti"> <button>Contatti</button></a>
+    <li id="scritta-bentornato" th:if="${nomeAdmin != null}" th:text="'Bentornato ' + ${nomeAdmin}"></li>
 </header>
 
 <footer th:fragment="amministratore(admin)">
@@ -28,7 +29,6 @@
         <li> realizzato da Daniele Pica e Giorgio Poggini</li>
         <li th:if="${admin}"><a th:href="@{/logout}">Logout</a></li>
         <li th:unless="${admin}"><a th:href="@{/login}">Effettua login</a></li>
-        <li><a th:href="@{/register}"> Registrati </a></li>
     </ul>
 </footer>
 

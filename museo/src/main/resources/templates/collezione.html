@@ -3,7 +3,7 @@
 <head th:replace="fragments/base.html :: headerfiles(title = ${collezione.nome})">
 </head>
 <body>
-<header th:replace="fragments/base.html :: menu"></header>
+<header th:replace="fragments/base.html :: menu(admin = ${admin})"></header>
 
 <div class="Sfondo">
     <a th:text="${collezione.nome}" class="Titolo-menu" href="#bloccocentrale">Artista</a>
