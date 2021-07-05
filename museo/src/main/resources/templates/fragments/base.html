@@ -4,6 +4,9 @@
     <meta charset="UTF-8"/>
     <link th:href="@{/css/style.css}" rel="stylesheet">
     <title th:text="${title}"></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bona+Nova&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -37,6 +40,7 @@
         <div id="blocco-testo-opera">
             <h1 th:text="${opera.titolo}">Nome Opera</h1>
             <p th:text="${opera.descrizione}"></p>
+            <a th:href = "@{'/artista/' + ${opera.artista.id}}" th:text = "${opera.artista.nome}+ ' ' + ${opera.artista.cognome}">  </a>
         </div>
     </div>
 </div>
@@ -57,6 +61,14 @@
             <a th:href="@{'/collezione/' + ${collezione.id}}" th:text="${collezione.nome}">Nome Collezione</a>
             <p th:text="${collezione.descrizione}"></p>
         </div>
+        <div id = "blocco-immagine-collezione" > 
+         <div th:if= "${collezione.opere.size() > 0}"> <img th:src="@{${collezione.opere[0].photosImagePath}}" /> </div>
+         <div th:unless ="${collezione.opere.size() > 0}"> <img th:src= "@{/images/prestoOnline.png}" /> </div>
+         <div th:if= "${collezione.opere.size() > 1}"> <img th:src="@{${collezione.opere[1].photosImagePath}}" /> </div>
+
+
+        </div>
+ 
     </div>
 </div>
 </body>

@@ -21,7 +21,7 @@ public class Opera {
 
 	private String titolo;
 
-	private int anno;  //dobbiamo capire che tipo mettere
+	private String anno;  
 
 	@Column(length = 2000)
 	private String descrizione;
