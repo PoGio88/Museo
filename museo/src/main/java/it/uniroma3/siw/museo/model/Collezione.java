@@ -22,6 +22,7 @@ public class Collezione {
     @OneToMany(mappedBy = "collezione")
     private List<Opera> opere;
 
+    @ToString.Exclude
     @ManyToOne
     private Curatore curatore;
 }

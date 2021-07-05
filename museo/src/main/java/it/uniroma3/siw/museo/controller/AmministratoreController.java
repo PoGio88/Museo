@@ -59,6 +59,8 @@ public class AmministratoreController {
             service.saveImage(uploadDir, fileName, immagine);
             return "admin/home.html";
         }
+        model.addAttribute("collezioni", this.service.tutteLeCollezioni());
+        model.addAttribute("artisti", this.service.tuttiGliArtisti());
         return "admin/operaForm";
     }
 
@@ -101,6 +103,7 @@ public class AmministratoreController {
             this.service.inserisciCollezione(collezione);
             return "admin/home.html";
         }
+        model.addAttribute("curatori",service.tuttiICuratori());
         return "admin/collezioneForm";
     }
 

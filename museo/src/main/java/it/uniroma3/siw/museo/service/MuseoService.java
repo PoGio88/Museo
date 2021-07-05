@@ -93,8 +93,8 @@ public class MuseoService {
 
 	@Transactional
 	public void eliminaCollezione(Collezione collezione) {
-		collezioneRepository.delete(collezione);
 		operaRepository.deleteOpereByCollezione(collezione);
+		collezioneRepository.delete(collezione);
 	}
 
 	@Transactional

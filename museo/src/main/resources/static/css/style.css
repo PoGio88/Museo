@@ -144,6 +144,7 @@ html {
 h2 {
 	color: white;
 	margin: 30px;
+    background-color: rgba(0,0,0,0.5);
 }
 
 #bloccocentrale {
@@ -266,9 +267,14 @@ color: #39f;
     object-fit: cover;
 }
 
+#blocco-foto-opera img:hover {
+    transform: scale(1.2);
+}
+
 #blocco-testo-opera {
     width: 70%;
     text-align: center;
+    padding: 15%;
 }
 
 blocco-testo-opera h1 {
@@ -327,6 +333,7 @@ div {
 }
 
 
+
 #blocco-artisti {
 	display: flex;
 	align-items: center;
@@ -344,8 +351,17 @@ div {
     flex-direction: column;
     align-items: center;
     flex-basis: 35%;
-  
-    
+}
+
+#blocco-artista a {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    margin-top: 20px;
+}
+
+#blocco-artista a:hover {
+    color: #3399ff;
 }
 
 #blocco-artista img {

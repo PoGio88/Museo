@@ -3,6 +3,7 @@ package it.uniroma3.siw.museo.model;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -26,12 +27,14 @@ public class Opera {
 	@Column(length = 2000)
 	private String descrizione;
 
+	@ToString.Exclude
 	@ManyToOne
     private Artista artista;
 
 	@Column(nullable = true, length = 64)
 	private String foto;
 
+	@ToString.Exclude
 	@ManyToOne
 	private Collezione collezione;
 
