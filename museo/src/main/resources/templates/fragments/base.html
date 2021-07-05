@@ -12,7 +12,7 @@
         <ul class="menu">
             <li><a class="elementiMenu" th:href="@{/visualizzaOpere}">Opere</a></li>
             <li><a class="elementiMenu" th:href="@{/collezioni}">Collezioni</a></li>
-            <li><a class="elementiMenu" th:href="@{/visualizzaArtisti}">Autori</a></li>
+            <li><a class="elementiMenu" th:href="@{/visualizzaArtisti}">Artisti</a></li>
         </ul>
     </nav>
     <a href="/index#blocco-contatti"> <button>Contatti</button></a>
@@ -56,9 +56,6 @@
         <div id="blocco-testo-collezione">
             <a th:href="@{'/collezione/' + ${collezione.id}}" th:text="${collezione.nome}">Nome Collezione</a>
             <p th:text="${collezione.descrizione}"></p>
-        </div>
-        <div id="blocco-slider-collezioni">
-
         </div>
     </div>
 </div>

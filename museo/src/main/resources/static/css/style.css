@@ -67,6 +67,23 @@ button:hover {
 	background: #39f;
 }
 
+.buttonExplore {
+	padding: 20px 30px;
+	background: #0d94a6;
+	border:none;
+	border-radius: 50px;
+	cursor: pointer;
+    transition: all .3s ease;
+    margin-right: 0px;
+    font-size: x-large;
+    
+    
+}
+.buttonExplore:hover {
+	background: #39f;
+	
+}
+
 
 .blocco1{
   font-family: sans-serif;
@@ -92,27 +109,33 @@ html {
     background-repeat: no-repeat;
     background-attachment: scroll;
     text-align: center;
-
-}
-
-#Titolo {
-    line-height: 500px;
-    color: white;
-    font-size: 100px;
-    text-decoration: none;
-    position: absolute;
-    top: 30%;
-    left: 40%;
+    display:flex;
+    flex-direction: column;
     
+
 }
 
-.Titolo-menu {
+.titolo {
 	line-height: 800px;
     color: white;
     font-size: 100px;
     text-decoration: none;
+	
+}
+
+
+.Titolo-menu {
+	line-height: 400px;
+    color: white;
+    font-size: 100px;
+    text-decoration: none;
     
     
+}
+h2 {
+	color: white;
+	transform: translate(10px, -200px);
+	margin: 30px;
 }
 
 #bloccocentrale {
@@ -265,12 +288,6 @@ div {
 #blocco-testo-collezione {
     width: 60%;
     text-align: center;
-}
-
-#blocco-slider-collezioni {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 #blocco-artisti {

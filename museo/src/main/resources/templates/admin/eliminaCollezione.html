@@ -12,7 +12,7 @@
             <span>Scegli la collezione da eliminare</span>
             <div class="textbox">
                 <span>Collezione  </span>
-                <select name="Collezione" th:field="*{nome}">
+                <select name="Collezione" th:field="*{id}">
                     <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.id}"></option>
                 </select>
             </div>

@@ -22,7 +22,7 @@ public class Curatore {
 
     private String luogoNascita;
 
-    private Date dataNascita;    //controllare tipo
+    private String dataNascita;    //controllare tipo
 
     private String email;
 

@@ -12,7 +12,7 @@
             <span>Scegli l'opera da eliminare</span>
             <div class="textbox">
                 <span>Opera  </span>
-                <select name="Opere" th:field="*{titolo}">
+                <select name="Opere" th:field="*{id}">
                     <option th:each="op : ${opere}" th:text="${op.titolo}" th:value="${op.id}"></option>
                 </select>
             </div>
