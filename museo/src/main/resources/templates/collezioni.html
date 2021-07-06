@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{header.collezioni})"> </head>
+</head>
+<body>
+<header th:replace="fragments/base.html :: menu(admin = ${admin})"></header>
+
+<div class="Sfondo">
+    <a class="Titolo-menu">Collezioni</a>
+    <a href="#contenutoprincipale"> <button class ="buttonExplore">Esplora collezioni</button></a>
+</div>
+
+<div id="bloccocentrale">
+    <div id="contenutoprincipale">
+        <div th:each="collezione : ${collezioni}" >
+            <div th:replace="fragments/base.html :: collezioneDaVisualizzare(collezione = ${collezione})">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer th:replace="fragments/base.html :: amministratore(admin = ${admin})">
+</footer>
+</body>
+</html>

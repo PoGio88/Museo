@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles(title)">
+    <meta charset="UTF-8"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <title th:text="${title}"></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bona+Nova&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header th:fragment="menu(admin)">
+    <nav>
+        <ul class="menu">
+            <li><a class="elementiMenu" th:href="@{/visualizzaOpere}">Opere</a></li>
+            <li><a class="elementiMenu" th:href="@{/collezioni}">Collezioni</a></li>
+            <li><a class="elementiMenu" th:href="@{/visualizzaArtisti}">Artisti</a></li>
+        </ul>
+    </nav>
+    <a th:unless="${admin}" href="/index#blocco-contatti"> <button>Contatti</button></a>
+    <li id="scritta-bentornato" th:if="${nomeAdmin != null}" th:text="'Bentornato ' + ${nomeAdmin}"></li>
+</header>
+
+<footer th:fragment="amministratore(admin)">
+    <ul id="fondo-testo">
+        <li th:if="${admin}"><a href="/default">Home</a> </li>
+        <li th:unless="${admin}"><a href="/">Home</a></li>
+        <li> realizzato da Daniele Pica e Giorgio Poggini</li>
+        <li th:if="${admin}"><a th:href="@{/logout}">Logout</a></li>
+        <li th:unless="${admin}"><a th:href="@{/login}">Effettua login</a></li>
+    </ul>
+</footer>
+
+<div th:fragment="operaDaVisualizzare(opera)">
+    <div id="blocco-opera">
+        <div id="blocco-foto-opera">
+            <img th:src="@{${opera.photosImagePath}}"/>
+        </div>
+        <div id="blocco-testo-opera">
+            <h1 th:text="${opera.titolo}">Nome Opera</h1>
+            <p th:text="${opera.descrizione}"></p>
+            <a th:href = "@{'/artista/' + ${opera.artista.id}}" th:text = "${opera.artista.nome}+ ' ' + ${opera.artista.cognome}">  </a>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="artistaDaVisualizzare(artista)"> 
+    <div id="blocco-artista">
+        <img th:src="@{${artista.photosImagePath}}"/>
+        <a th:href="@{'/artista/' + ${artista.id}}" th:text="${artista.nome} +' '+${artista.cognome}"></a>
+        <div th:if="${!artista.dataNascita.isEmpty()}"><p th:text="'Nato a ' + ${artista.luogoNascita} + ' nel ' + ${artista.dataNascita}"></p> </div>
+        <div th:if="${!artista.dataMorte.isEmpty()}"> <p th:text="'Morto a ' + ${artista.luogoMorte} + ' nel ' + ${artista.dataMorte}"></p> </div>
+        <p th:text="'Nazionalità '+${artista.nazionalita}"> </p>
+    </div>
+</div>
+
+<div th:fragment="collezioneDaVisualizzare(collezione)">
+    <div id="blocco-collezione">
+        <div id="blocco-testo-collezione">
+            <a th:href="@{'/collezione/' + ${collezione.id}}" th:text="${collezione.nome}">Nome Collezione</a>
+            <p th:text="${collezione.descrizione}"></p>
+        </div>
+        <div id = "blocco-immagine-collezione" > 
+         <div th:if= "${collezione.opere.size() > 0}"> <img th:src="@{${collezione.opere[0].photosImagePath}}" /> </div>
+         <div th:unless ="${collezione.opere.size() > 0}"> <img th:src= "@{/images/prestoOnline.png}" /> </div>
+         <div th:if= "${collezione.opere.size() > 1}"> <img th:src="@{${collezione.opere[1].photosImagePath}}" /> </div>
+
+
+        </div>
+ 
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "fragments/base.html :: headerfiles(title= 'Effettua accesso')">
+</head>
+<body>
+       
+<div class = "blocco1">
+	<header th:replace="fragments/base.html :: menu(admin = ${admin})"></header>
+        <div class="login-box">
+		<h1>Login</h1>
+	<form th:action="@{/login}" method="POST">
+		<div class="textbox">
+				<span>Username:</span>
+				<span><input name="username" type="text" required /></span>
+			</div>		
+			<div class="textbox">
+				<span>Password:</span>
+				<span><input name="password" type="password" required /></span>
+			</div>
+			<div>
+				<span><button class = "btn" type="submit">Login</button></span>
+			</div>
+	</form>
+		</div>
+</div>
+<footer th:replace="fragments/base.html :: amministratore(admin = ${admin})">
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title = 'Menu amministratore')">
+</head>
+<body>
+<div class="blocco1">
+    <header th:replace="fragments/base.html :: menu(admin = ${admin})"></header>
+    <a class="Titolo-menu">Menu Amministratore</a>
+
+    <div class="bloccoOperazioni">
+        <a href="aggiungiOpera"> Inserisci Opera </a>
+        <a href="eliminaOpera"> Elimina opera </a>
+        <a href="aggiungiCollezione"> Nuova Collezione </a>
+        <a href="eliminaCollezione"> Elimina collezione </a>
+        <a href="aggiungiArtista"> Aggiungi artista </a>
+
+
+    </div>
+</div>
+<footer th:replace="fragments/base.html :: amministratore(admin = ${admin})">
+</footer>
+</body>
+</html>
+

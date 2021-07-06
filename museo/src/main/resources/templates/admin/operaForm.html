@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Aggiungi opera')">
+</head>
+<body>
+
+<div class="blocco1">
+    <header th:replace="fragments/base.html :: menu(admin = ${admin})"></header>
+    <div class="login-box">
+        <h1>Aggiungi Opera</h1>
+        <form th:action="@{/aggiungiOpera}" method="post" th:object="${opera}" enctype="multipart/form-data">
+            <div th:if="${#fields.hasGlobalErrors()}">
+                <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+            </div>
+            <div class="textbox">
+                <span>Nome</span>
+                <span><input type="text" th:field="*{titolo}"/></span>
+                <span th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></span>
+            </div>
+            <div class="textbox">
+                <span>Anno</span>
+                <span><input type="text" th:field="*{anno}"/></span>
+            </div>
+            <div class="textbox">
+                <span>Descrizione</span>
+                <span><textarea type="text" th:field="*{descrizione}"/></span>
+                <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+            </div>
+            <div class="textbox">
+                <span>Artista</span>
+                <select name="artista" th:field="*{artista}">
+                    <option th:each="art : ${artisti}" th:text="|${art.nome} ${art.cognome}|"
+                            th:value="${art.id}"></option>
+                </select>
+            </div>
+            <div class="textbox">
+                <span>Collezione</span>
+                <select name="Collezione" th:field="*{collezione}">
+                    <option th:each="coll : ${collezioni}" th:text="${coll.nome}" th:value="${coll.id}"></option>
+                </select>
+            </div>
+            <div class="textbox">
+                <span>Foto opera</span>
+                <input type="file" name="immagine" required/>
+            </div>
+            <div>
+                <span><button type="submit">Invio</button></span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer th:replace="fragments/base.html :: amministratore(admin = ${admin})">
+
+</body>
+</html>

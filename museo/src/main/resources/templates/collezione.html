@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title = ${collezione.nome})">
+</head>
+<body>
+<header th:replace="fragments/base.html :: menu(admin = ${admin})"></header>
+
+<div class="Sfondo">
+    <a th:text="${collezione.nome}" class="Titolo-menu" href="#bloccocentrale">Artista</a>
+    <h2 th:text  = "${collezione.descrizione}"> Descrizione Opera </h2>
+</div>
+
+<div id="bloccocentrale">
+    <div id="contenutoprincipale">
+    <div class= "textbox">
+<span> A cura di </span>
+<span th:text = "${curatore.nome}"> Nome curatore </span>
+<span th:text = "${curatore.cognome}+','"> Cognome curatore </span>
+<span th:text = "'Matricola: ' + ${curatore.matricola}+','"> Matricola curatore </span>
+<span th:text = "'Email: ' + ${curatore.email}+','"> email curatore </span>
+<span th:text = "'Nato a ' + ${curatore.luogoNascita}"> LuogoNascita curatore </span>
+<span th:text = "'il ' + ${curatore.dataNascita}"> DataNascita curatore </span>
+</div>
+        <div th:each="opera : ${opere}">
+            <div th:replace="fragments/base.html :: operaDaVisualizzare(opera = ${opera})">
+
+            </div>
+        </div>
+        
+
+    </div>
+</div>
+
+
+<footer th:replace="fragments/base.html :: amministratore(admin = ${admin})">
+</footer>
+</body>
+</html>

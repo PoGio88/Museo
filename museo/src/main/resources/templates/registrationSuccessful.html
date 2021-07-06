@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "fragments/base.html :: headerfiles(title = 'Registrazione effettuata')">
+</head>
+<body>
+        <header th:replace= "fragments/base.html :: menu">
+        </header>
+
+        <div id="Sfondo">
+                <a id="Complimenti, ti sei registrato!" href="#bloccocentrale">Museo</a>
+        </div>
+
+        <div id="bloccocentrale">
+            
+        </div>
+
+        <div id="bloccoinformazioni">Prova</div>
+<footer th:replace="fragments/base.html :: amministratore(admin = ${admin})">
+           </footer>
+</body>
+</html>

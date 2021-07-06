@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{header.artisti})"> </head>
+</head>
+<body>
+<header th:replace="fragments/base.html :: menu(admin = ${admin})"></header>
+<div class="Sfondo">
+    <a class="Titolo-menu">Artisti</a>
+    <a href="#bloccocentrale"> <button class ="buttonExplore">Esplora artisti</button></a>
+</div>
+
+<div id="bloccocentrale">
+    <div id="blocco-artisti">
+        <span th:each="artista : ${artisti}">
+            <span th:replace="fragments/base.html :: artistaDaVisualizzare(artista = ${artista})">
+
+            </span>
+        </span>
+
+    </div>
+</div>
+
+<footer th:replace="fragments/base.html :: amministratore(admin = ${admin})">
+</footer>
+</body>
+</html>
